@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">JobTracker</string>
+    <string name="buttonNewData">Внести данные</string>
+    <string name="buttonGetData">Мои данные</string>
+    <string name="buttonSettings">Настройки</string>
+    <string name="main_page_block">За этот месяц:</string>
+    <string name="Default_jobCost">0</string>
+    <string name="Default_data">12 Dec 2024</string>
+
+
+    <string name="pointsPlaceholder">Кол-во точек</string>
+    <string name="cargoWeight">Общий вес груза</string>
+    <string name="switchForAdditionalPoints">Включить доп точки</string>
+    <string name="placeholderForAddPoints">Кол-во доп точек</string>
+    <string name="buttonSaveNewData">Сохранить</string>
+
+
+
+
+
+
+
+</resources>
