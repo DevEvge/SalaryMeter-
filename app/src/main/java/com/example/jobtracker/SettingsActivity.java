@@ -1,12 +1,15 @@
 package com.example.jobtracker;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -28,8 +31,26 @@ public class SettingsActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button button = findViewById(R.id.buttonDeleteDB);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button buttonChangeConst = findViewById(R.id.buttonChangeConstant);
+        buttonChangeConst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View dialogView = getLayoutInflater().inflate(R.layout.activity_editconst_modal, null);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+                builder.setView(dialogView);
+
+                AlertDialog dialog = builder.create();
+                dialog.setCanceledOnTouchOutside(true);
+                if (dialog.getWindow() != null) {
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                }
+                dialog.show();
+            }
+        });
+
+        Button buttonDeleteDB = findViewById(R.id.buttonDeleteDB);
+        buttonDeleteDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MyApp.getDbExecutor().execute(new Runnable() {

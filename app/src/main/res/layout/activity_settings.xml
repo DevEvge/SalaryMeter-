@@ -20,7 +20,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/buttonSettings"
+        android:id="@+id/buttonDeleteDB"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_gravity="center"

@@ -18,6 +18,12 @@
     <string name="buttonDeleteDB">Сбросить базу данных</string>
     <string name="buttonChangeConst">Настроить константы</string>
 
+    <string name="modalTitle">Новые константы</string>
+    <string name="costPerPoint">Стоимость за точку</string>
+    <string name="departureFee">Ставка</string>
+    <string name="pricePerTon">Цена за тонну</string>
+    <string name="buttonSaveConst">Сохранить</string>
+
 
 
 
