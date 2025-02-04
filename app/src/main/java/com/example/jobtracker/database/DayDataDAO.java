@@ -16,4 +16,7 @@ public interface DayDataDAO {
 
     @Query("SELECT * FROM DayData WHERE date LIKE :yearMonth || '%'")
     List<DayData> getAllByYearMonth(String yearMonth);
+
+    @Query("DELETE FROM DayData")
+    void deleteAll();
 }

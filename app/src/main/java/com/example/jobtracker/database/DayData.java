@@ -10,10 +10,10 @@ public class DayData {
 
     public int pointsCount;
     public int totalWeight;
-    public String additionalPoints;
+    public int additionalPoints;
     public String date;
 
-    public DayData(int pointsCount, int totalWeight, String additionalPoints, String date) {
+    public DayData(int pointsCount, int totalWeight, int additionalPoints, String date) {
         this.pointsCount = pointsCount;
         this.totalWeight = totalWeight;
         this.additionalPoints = additionalPoints;
