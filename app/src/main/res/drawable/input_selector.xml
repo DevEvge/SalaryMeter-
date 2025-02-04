@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Состояние отключено -->
+    <item android:state_enabled="false" android:drawable="@drawable/input_disabled" />
+    <!-- Состояние фокуса -->
+    <item android:state_focused="true" android:drawable="@drawable/input_focused" />
+    <!-- Обычное состояние -->
+    <item android:drawable="@drawable/input_normal" />
+</selector>
