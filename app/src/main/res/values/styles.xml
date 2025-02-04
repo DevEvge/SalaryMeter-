@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Buttons_style" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/rounded_button</item>
+        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <style name="Custom_inputs_selectors" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/input_selector</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="Custom_text" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/text</item>
     </style>
 
