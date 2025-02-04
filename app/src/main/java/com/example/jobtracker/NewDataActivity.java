@@ -3,10 +3,10 @@ package com.example.jobtracker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Switch;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class NewDataActivity extends AppCompatActivity {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,13 @@ public class NewDataActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        EditText inputAdditional = findViewById(R.id.additionalInput);
+        EditText inputPointsCount = findViewById(R.id.inputPointsCount);
+        EditText inputWeithtTotal = findViewById(R.id.inputTotalWeight);
+        Button buttonSaveNewData = findViewById(R.id.buttonSaveNewData);
+
 
         ImageButton arrowBack = findViewById(R.id.arrow_back);
         arrowBack.setOnClickListener(new View.OnClickListener() {
@@ -41,16 +51,21 @@ public class NewDataActivity extends AppCompatActivity {
         switchBTN.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                EditText input = findViewById(R.id.additionalInput);
-                if (isChecked) {
-                    input.setEnabled(true);
-                } else {
-                    input.setEnabled(false);
-                }
+                inputAdditional.setEnabled(isChecked);
             }
         });
 
+        Button button = findViewById(R.id.buttonSaveNewData);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String pointsCount = inputPointsCount.getText().toString();
+                String  totalWeight = inputWeithtTotal.getText().toString();
+                String additionalPoints = inputAdditional.getText().toString();
 
+
+            }
+        });
 
 
     }
