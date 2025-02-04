@@ -15,4 +15,11 @@
     <string name="buttonSaveNewData">Сохранить</string>
 
 
+    <string name="buttonDeleteDB">Сбросить базу данных</string>
+    <string name="buttonChangeConst">Настроить константы</string>
+
+
+
+
+
 </resources>

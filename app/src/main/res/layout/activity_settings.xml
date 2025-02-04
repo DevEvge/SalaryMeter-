@@ -9,11 +9,25 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/buttonDeleteDB"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="Delete all"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="400dp"/>
+        android:id="@+id/buttonChangeConstant"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="28dp"
+        android:enabled="true"
+        android:text="@string/buttonChangeConst"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonSettings"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="28dp"
+        android:enabled="true"
+        android:text="@string/buttonDeleteDB"
+        android:textSize="20sp" />
 
 </LinearLayout>
