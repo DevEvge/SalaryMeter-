@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/buttonDeleteDB"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="Delete all"

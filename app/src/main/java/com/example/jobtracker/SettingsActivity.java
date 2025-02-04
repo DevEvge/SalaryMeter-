@@ -1,12 +1,19 @@
 package com.example.jobtracker;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.jobtracker.database.AppDatabase;
+import com.example.jobtracker.database.MyApp;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -20,5 +27,23 @@ public class SettingsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button button = findViewById(R.id.buttonDeleteDB);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyApp.getDbExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        AppDatabase db = MyApp.getDatabase();
+                        db.dayDataDAO().deleteAll();
+                    }
+                });
+                Toast.makeText(SettingsActivity.this, "База данных очищена", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
