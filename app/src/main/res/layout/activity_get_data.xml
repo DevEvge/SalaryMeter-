@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".GetDataActivity">
 
     <ImageButton
-        android:id="@+id/arrow_back3"
+        android:id="@+id/arrow_back1"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="30dp"
@@ -18,26 +17,16 @@
         android:src="@drawable/navbar___left"
         android:background="@android:color/transparent"/>
 
-    <Button
-        android:id="@+id/buttonChangeConstant"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="28dp"
-        android:enabled="true"
-        android:text="@string/buttonChangeConst"
-        android:textSize="20sp" />
 
     <Button
-        android:id="@+id/buttonDeleteDB"
+        android:id="@+id/buttonNewData"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="28dp"
-        android:enabled="true"
-        android:text="@string/buttonDeleteDB"
+        android:layout_marginTop="100dp"
+        android:text="@string/buttonGetDataForMonth"
         android:textSize="20sp" />
+
 
 </LinearLayout>

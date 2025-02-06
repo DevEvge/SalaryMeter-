@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.jobtracker.database.AppDatabase;
 import com.example.jobtracker.database.MyApp;
@@ -31,21 +33,38 @@ public class SettingsActivity extends AppCompatActivity {
             return insets;
         });
 
+        ImageButton buttonArrowBack = findViewById(R.id.arrow_back3);
+        buttonArrowBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Button buttonChangeConst = findViewById(R.id.buttonChangeConstant);
         buttonChangeConst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View dialogView = getLayoutInflater().inflate(R.layout.activity_editconst_modal, null);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
-                builder.setView(dialogView);
+                EditConstActivityModal dialogFragment = EditConstActivityModal.newInstance();
+                FragmentManager fm = getSupportFragmentManager();
 
-                AlertDialog dialog = builder.create();
-                dialog.setCanceledOnTouchOutside(true);
-                if (dialog.getWindow() != null) {
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                }
-                dialog.show();
+                dialogFragment.show(fm, "EditConstDialog");
+
+
+
+//                View dialogView = getLayoutInflater().inflate(R.layout.activity_editconst_modal, null);
+//
+//                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+//                builder.setView(dialogView);
+//
+//                AlertDialog dialog = builder.create();
+//                dialog.setCanceledOnTouchOutside(true);
+//                if (dialog.getWindow() != null) {
+//                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                }
+//                dialog.show();
             }
         });
 

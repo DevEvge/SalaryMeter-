@@ -24,8 +24,9 @@
     <string name="pricePerTon">Цена за тонну</string>
     <string name="buttonSaveConst">Сохранить</string>
 
+    <string name="buttonGetDataForMonth">Данные за месяц</string>
 
-
+    <string name="inputChoseDate">Выбрать дату</string>
 
 
 </resources>

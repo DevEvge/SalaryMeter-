@@ -3,8 +3,7 @@
         <color name="blue">#00ACC1</color>
         <color name="app_background">#2C3E50</color>
         <color name="modal_background">#34495E</color>
-        <color name="text">#F1ECEC</color>
-        <color name="tex1">#ECEDF1</color>
+        <color name="text">#ECEDF1</color>
         <color name="input_normal_background">#455A64</color>
         <color name="input_focused_background">#607D8B</color>
         <color name="input_disabled_background">#37474F</color>

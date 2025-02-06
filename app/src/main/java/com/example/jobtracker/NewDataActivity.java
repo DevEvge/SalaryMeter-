@@ -1,18 +1,12 @@
 package com.example.jobtracker;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -32,24 +26,20 @@ import java.util.Locale;
 
 public class NewDataActivity extends AppCompatActivity {
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_new_data);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.rootLayout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-
         EditText inputAdditional = findViewById(R.id.additionalInput);
         EditText inputPointsCount = findViewById(R.id.inputPointsCount);
-        EditText inputWeithtTotal = findViewById(R.id.inputTotalWeight);
+        EditText inputWeightTotal = findViewById(R.id.inputTotalWeight);
         Button buttonSaveNewData = findViewById(R.id.buttonSaveNewData);
 
 
@@ -70,12 +60,11 @@ public class NewDataActivity extends AppCompatActivity {
             }
         });
 
-
         buttonSaveNewData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String pointsCountStr = inputPointsCount.getText().toString();
-                String  totalWeightStr = inputWeithtTotal.getText().toString();
+                String  totalWeightStr = inputWeightTotal.getText().toString();
                 String additionalPointsStr = inputAdditional.getText().toString();
 
                 int pointsCount = 0;
@@ -94,7 +83,6 @@ public class NewDataActivity extends AppCompatActivity {
 
                 String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                         .format(new Date());
-
 
                 DayData data = new DayData(
                         pointsCount,
