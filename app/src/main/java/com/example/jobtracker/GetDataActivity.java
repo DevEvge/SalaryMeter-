@@ -25,11 +25,20 @@ public class GetDataActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button buttonGetDataForMonth = findViewById(R.id.buttonGetDataForDay);
-        buttonGetDataForMonth.setOnClickListener(new View.OnClickListener() {
+        Button buttonGetDataForDay = findViewById(R.id.buttonGetDataForDay);
+        buttonGetDataForDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GetDataActivity.this, GetDataForDayActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button buttonGetDataForMonth = findViewById(R.id.buttonGetDataForMonth);
+        buttonGetDataForMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GetDataActivity.this, GetDataForMonth.class);
                 startActivity(intent);
             }
         });

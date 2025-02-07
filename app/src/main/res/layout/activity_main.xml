@@ -80,9 +80,6 @@
             android:enabled="true"
             android:text="@string/buttonSettings"
             android:textSize="20sp" />
-
     </LinearLayout>
-
-
 
 </LinearLayout>

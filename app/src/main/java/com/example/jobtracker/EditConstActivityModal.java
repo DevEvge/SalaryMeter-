@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +17,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.jobtracker.database.AppDatabase;
+import com.example.jobtracker.database.AppSettings;
+import com.example.jobtracker.database.MyApp;
 
 public class EditConstActivityModal extends DialogFragment {
 
@@ -46,6 +51,33 @@ public class EditConstActivityModal extends DialogFragment {
                 dismiss();
             }
         });
+
+        EditText costPerPointConst = view.findViewById(R.id.costPerPointConst);
+        EditText departureFeeConst = view.findViewById(R.id.departureFeeConst);
+        EditText pricePerTon = view.findViewById(R.id.pricePerTon);
+        Button buttonSaveNewConst = view.findViewById(R.id.buttonSaveConst);
+
+        buttonSaveNewConst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int costPerPoint = Integer.parseInt(costPerPointConst.getText().toString());
+                int deparyureFee = Integer.parseInt(departureFeeConst.getText().toString());
+                double pricePerTona = Double.parseDouble(pricePerTon.getText().toString());
+
+                AppSettings appSettings = new AppSettings(1, costPerPoint, deparyureFee, pricePerTona);
+                MyApp.getDbExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        AppDatabase database = MyApp.getDatabase();
+                        database.appSettingsDAO().insert(appSettings);
+                    }
+                });
+                dismiss();
+            }
+        });
+
+
+
 
 
 

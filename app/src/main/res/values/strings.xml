@@ -42,5 +42,16 @@
 
     <string name="editWarning">Данные введенные на этой странице заменят предыдущие данные за этот день</string>
 
+    <string name="pointsForMonth">Кол-точек за месяц</string>
+    <string name="cargoWeightForMonth">Вес за месяц</string>
+    <string name="AdditionalPointsForMonth">Дополнительные точки за месяц</string>
+    <string name="TotalJobCostMonth">Прибыль за месяц</string>
+
+
+    <string name="edittextYear">Введите год</string>
+    <string name="buttonLoadData">Загрузить</string>
+    <string name="alertNoDataForMonth">Данных за месяц нету</string>
+
+
 
 </resources>

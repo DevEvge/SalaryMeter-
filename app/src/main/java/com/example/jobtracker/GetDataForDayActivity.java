@@ -129,8 +129,7 @@ public class GetDataForDayActivity extends AppCompatActivity {
                 int additionalPoints = 0;
                 double salary = 0;
 
-                for (
-                        DayData record : records) {
+                for (DayData record : records) {
                     pointsCount = record.pointsCount;
                     totalWeight = record.totalWeight;
                     additionalPoints = record.additionalPoints;
