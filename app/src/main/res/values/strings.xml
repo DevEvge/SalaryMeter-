@@ -27,6 +27,13 @@
     <string name="buttonGetDataForMonth">Данные за месяц</string>
 
     <string name="inputChoseDate">Выбрать дату</string>
+    
+    <string name="textViewOnGetDayData">Показатели за выбранную дату:</string>
+    <string name="pointsForDay">Кол-точек за день</string>
+    <string name="cargoWeightForDay">Вес за день</string>
+    <string name="AdditionalPointsForDay">Дополнительные точки</string>
+    <string name="TotalJobCost">Прибыль за день</string>
+    <string name="alertNoRecords">Данных за день нету</string>
 
 
 </resources>

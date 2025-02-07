@@ -29,7 +29,7 @@ public class GetDataActivity extends AppCompatActivity {
         buttonGetDataForMonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GetDataActivity.this, GetDataForMonthActivity.class);
+                Intent intent = new Intent(GetDataActivity.this, GetDataForDayActivity.class);
                 startActivity(intent);
             }
         });
