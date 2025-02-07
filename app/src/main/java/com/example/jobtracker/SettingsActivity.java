@@ -51,20 +51,6 @@ public class SettingsActivity extends AppCompatActivity {
                 FragmentManager fm = getSupportFragmentManager();
 
                 dialogFragment.show(fm, "EditConstDialog");
-
-
-
-//                View dialogView = getLayoutInflater().inflate(R.layout.activity_editconst_modal, null);
-//
-//                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
-//                builder.setView(dialogView);
-//
-//                AlertDialog dialog = builder.create();
-//                dialog.setCanceledOnTouchOutside(true);
-//                if (dialog.getWindow() != null) {
-//                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                }
-//                dialog.show();
             }
         });
 

@@ -25,15 +25,22 @@
     <string name="buttonSaveConst">Сохранить</string>
 
     <string name="buttonGetDataForMonth">Данные за месяц</string>
+    <string name="buttonGetDataForDay">Данные за день</string>
 
     <string name="inputChoseDate">Выбрать дату</string>
-    
+
     <string name="textViewOnGetDayData">Показатели за выбранную дату:</string>
     <string name="pointsForDay">Кол-точек за день</string>
     <string name="cargoWeightForDay">Вес за день</string>
     <string name="AdditionalPointsForDay">Дополнительные точки</string>
     <string name="TotalJobCost">Прибыль за день</string>
     <string name="alertNoRecords">Данных за день нету</string>
+
+    <string name="doYouWantToEditTodayData">Изменить данные за сегодня?</string>
+    <string name="editDataToday">Изменить данные</string>
+    <string name="cancelEditing">Отмена</string>
+
+    <string name="editWarning">Данные введенные на этой странице заменят предыдущие данные за этот день</string>
 
 
 </resources>

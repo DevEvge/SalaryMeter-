@@ -19,12 +19,22 @@
 
 
     <Button
-        android:id="@+id/buttonNewData"
+        android:id="@+id/buttonGetDataForDay"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="100dp"
+        android:text="@string/buttonGetDataForDay"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonGetDataForMonth"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/buttonGetDataForMonth"
         android:textSize="20sp" />
 

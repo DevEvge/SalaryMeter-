@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="30dp"
+    android:layout_marginVertical="300dp"
+    android:background="@drawable/rounded_modal"
+    android:orientation="vertical"
+    tools:context=".EditDataTodayModal">
+
+    <ImageButton
+        android:id="@+id/x_close1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_gravity="end"
+        android:scaleType="fitCenter"
+        android:src="@drawable/close"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/doYouWantToEditTodayData"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/buttonEditDataToday"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:text="@string/editDataToday"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_cancelEditing"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/cancelEditing"
+        android:textSize="20sp" />
+
+
+</LinearLayout>

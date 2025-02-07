@@ -1,17 +1,19 @@
 package com.example.jobtracker.database;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
 public class DayData {
-    @PrimaryKey(autoGenerate = true)
-    public long ID;
 
+    @PrimaryKey
+    @NonNull
+    public String date;
     public int pointsCount;
     public int totalWeight;
     public int additionalPoints;
-    public String date;
+
 
     public DayData(int pointsCount, int totalWeight, int additionalPoints, String date) {
         this.pointsCount = pointsCount;

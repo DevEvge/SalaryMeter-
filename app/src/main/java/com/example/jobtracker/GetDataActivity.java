@@ -25,7 +25,7 @@ public class GetDataActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button buttonGetDataForMonth = findViewById(R.id.buttonNewData);
+        Button buttonGetDataForMonth = findViewById(R.id.buttonGetDataForDay);
         buttonGetDataForMonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

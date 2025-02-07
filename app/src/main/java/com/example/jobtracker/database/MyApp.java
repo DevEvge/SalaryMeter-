@@ -20,7 +20,7 @@ public class MyApp extends Application {
                 getApplicationContext(),
                 AppDatabase.class,
                 "my_database_name"
-        ).build();
+        ).fallbackToDestructiveMigration().build();
 
         dbExecutor = Executors.newSingleThreadExecutor();
     }
@@ -32,6 +32,8 @@ public class MyApp extends Application {
     public static ExecutorService getDbExecutor() {
         return dbExecutor;
     }
+
+
 
 
 }

@@ -1,5 +1,8 @@
 package com.example.jobtracker;
 
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +10,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -36,6 +40,12 @@ public class NewDataActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        TextView warningText = findViewById(R.id.warningMassage);
+
+        if (Config.edit) {
+            warningText.setVisibility(VISIBLE);
+        }
 
         EditText inputAdditional = findViewById(R.id.additionalInput);
         EditText inputPointsCount = findViewById(R.id.inputPointsCount);
@@ -100,6 +110,9 @@ public class NewDataActivity extends AppCompatActivity {
                 });
 
                 Toast.makeText(NewDataActivity.this, "Данные сохранены", Toast.LENGTH_SHORT).show();
+
+                Config.edit = false;
+                warningText.setVisibility(INVISIBLE);
 
                 Intent intent = new Intent(NewDataActivity.this, MainActivity.class);
                 startActivity(intent);

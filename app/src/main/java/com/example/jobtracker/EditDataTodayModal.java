@@ -1,6 +1,7 @@
 package com.example.jobtracker;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -11,16 +12,13 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-public class EditConstActivityModal extends DialogFragment {
-
-    public static EditConstActivityModal newInstance() {
-        return new EditConstActivityModal();
+public class EditDataTodayModal extends DialogFragment {
+    public static EditDataTodayModal newInstance() {
+        return new EditDataTodayModal();
     }
 
     @NonNull
@@ -37,9 +35,9 @@ public class EditConstActivityModal extends DialogFragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_editconst_modal, container, false);
+        View view = inflater.inflate(R.layout.activity_edit_today_data_modal, container, false);
 
-        ImageButton btnClose = view.findViewById(R.id.x_close);
+        ImageButton btnClose = view.findViewById(R.id.x_close1);
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +45,15 @@ public class EditConstActivityModal extends DialogFragment {
             }
         });
 
+        Button buttonEditData = view.findViewById(R.id.buttonEditDataToday);
+        buttonEditData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireActivity(), NewDataActivity.class);
+                Config.edit = true;
+                startActivity(intent);
+            }
+        });
 
 
         return view;
@@ -62,4 +69,5 @@ public class EditConstActivityModal extends DialogFragment {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
     }
+
 }

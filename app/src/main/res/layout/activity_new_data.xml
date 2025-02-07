@@ -19,10 +19,23 @@
         android:background="@android:color/transparent"/>
 
     <TextView
+        android:id="@+id/warningMassage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editWarning"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:visibility="invisible"
+        android:textSize="20sp"
+        android:textColor="@color/error_text"
+        android:layout_marginHorizontal="30dp"/>
+
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="20dp"
         android:text="@string/pointsPlaceholder"
         android:textSize="20sp" />
 
