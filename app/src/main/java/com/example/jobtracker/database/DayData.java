@@ -10,14 +10,16 @@ public class DayData {
     @PrimaryKey
     @NonNull
     public String date;
+    public double salary;
     public int pointsCount;
     public int totalWeight;
     public int additionalPoints;
 
 
-    public DayData(int pointsCount, int totalWeight, int additionalPoints, String date) {
+    public DayData(int pointsCount, int totalWeight, int additionalPoints, String date, double salary) {
         this.pointsCount = pointsCount;
         this.totalWeight = totalWeight;
+        this.salary = salary;
         this.additionalPoints = additionalPoints;
         this.date = date;
     }

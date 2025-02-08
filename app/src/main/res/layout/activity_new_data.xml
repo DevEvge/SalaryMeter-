@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:clickable="true"
     tools:context=".NewDataActivity">
 
     <ImageButton
@@ -116,6 +118,7 @@
         android:text="@string/buttonSaveNewData"
         android:layout_marginTop="120dp"
         android:layout_gravity="center"
+        android:enabled="false"
         android:layout_marginHorizontal="30dp"
         android:textSize="20sp"
         android:textColor="@color/text"/>

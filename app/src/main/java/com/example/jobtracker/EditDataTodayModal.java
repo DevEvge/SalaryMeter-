@@ -55,6 +55,14 @@ public class EditDataTodayModal extends DialogFragment {
             }
         });
 
+        Button buttonClose = view.findViewById(R.id.button_cancelEditing);
+        buttonClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
 
         return view;
     }

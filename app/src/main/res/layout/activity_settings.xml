@@ -24,9 +24,20 @@
         android:layout_height="54dp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="250dp"
         android:enabled="true"
         android:text="@string/buttonChangeConst"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonEditDB"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="40dp"
+        android:enabled="true"
+        android:text="@string/buttonEditDB"
         android:textSize="20sp" />
 
     <Button
@@ -35,8 +46,8 @@
         android:layout_height="54dp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="28dp"
-        android:enabled="true"
+        android:layout_marginTop="300dp"
+        android:enabled="false"
         android:text="@string/buttonDeleteDB"
         android:textSize="20sp" />
 

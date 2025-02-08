@@ -17,6 +17,7 @@
 
     <string name="buttonDeleteDB">Сбросить базу данных</string>
     <string name="buttonChangeConst">Настроить константы</string>
+    <string name="buttonEditDB">Разрешить изменения в базу данных</string>
 
     <string name="modalTitle">Новые константы</string>
     <string name="costPerPoint">Стоимость за точку</string>
@@ -52,6 +53,6 @@
     <string name="buttonLoadData">Загрузить</string>
     <string name="alertNoDataForMonth">Данных за месяц нету</string>
 
-
+    <string name="Greeting">Привет! Это приложения для просчета ЗП и ведения статистики о рабочих днях. Для того что бы начать пользоваться приложением заполни поля ниже! </string>
 
 </resources>

@@ -19,6 +19,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.jobtracker.database.AppSettings;
 import com.example.jobtracker.database.DayData;
 import com.example.jobtracker.database.MyApp;
 
@@ -30,9 +31,9 @@ import java.util.concurrent.Executors;
 
 public class GetDataForDayActivity extends AppCompatActivity {
 
-    private final int costPerPoint = 24;
-    private final int departureFee = 900;
-    private final double pricePerTone = 0.5;
+    private int costPerPoint;
+    private int departureFee;
+    private double pricePerTone;
 
     private TextView alertError;
     private LinearLayout dayDataLayout;
@@ -111,6 +112,7 @@ public class GetDataForDayActivity extends AppCompatActivity {
             @Override
             public void run() {
                 List<DayData> records = MyApp.getDatabase().dayDataDAO().getDayDataByData(data);
+                List<AppSettings> constSettings = MyApp.getDatabase().appSettingsDAO().getAll();
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -129,13 +131,20 @@ public class GetDataForDayActivity extends AppCompatActivity {
                 int additionalPoints = 0;
                 double salary = 0;
 
+                for (AppSettings constant : constSettings) {
+                    costPerPoint = constant.costPerPoint;
+                    departureFee = constant.departureFee;
+                    pricePerTone = constant.pricePerTone;
+                }
+
                 for (DayData record : records) {
                     pointsCount = record.pointsCount;
                     totalWeight = record.totalWeight;
                     additionalPoints = record.additionalPoints;
+                    salary = record.salary;
                 }
 
-                salary = departureFee + (costPerPoint * (pointsCount + additionalPoints)) + (totalWeight * pricePerTone);
+
 
                 pointsForDay.setText(String.valueOf(pointsCount));
                 totalWeightForDay.setText(String.valueOf(totalWeight));

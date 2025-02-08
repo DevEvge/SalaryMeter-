@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.jobtracker.database.AppSettings;
 import com.example.jobtracker.database.DayData;
 import com.example.jobtracker.database.MyApp;
 
@@ -24,9 +25,10 @@ import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvSalary;
-    private final int costPerPoint = 24;
-    private final int departureFee = 900;
-    private final double pricePerTone = 0.5;
+    private int costPerPoint;
+    private int departureFee;
+    private double pricePerTone;
+    private double salary;
     private ExecutorService executor;
 
 
@@ -41,12 +43,30 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        MyApp.getDbExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                List<AppSettings> constants = MyApp.getDatabase().appSettingsDAO().getAll();
+                if (constants.isEmpty()) {
+                    Intent intent = new Intent(MainActivity.this, FirstAddConstants.class);
+                    startActivity(intent);
+
+                }
+            }
+        });
+
+
+
         Calendar calendar = Calendar.getInstance();
+
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         String yearMonth = String.format(Locale.getDefault(), "%04d-%02d", year, month);
         String currentDay = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month, day);
+
+        TextView dataForMainScreen = findViewById(R.id.dataMain);
+        dataForMainScreen.setText(currentDay);
 
         tvSalary = findViewById(R.id.textViewSalary);
         loadMonthlyData(yearMonth);
@@ -96,14 +116,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadMonthlyData(String yearMonth) {
         MyApp.getDbExecutor().execute(() -> {
-
             List<DayData> records = MyApp.getDatabase().dayDataDAO().getAllByYearMonth(yearMonth);
+
 
             double totalSalary = 0;
             for (DayData data : records) {
-                totalSalary += departureFee + (costPerPoint * (data.pointsCount + data.additionalPoints)) + (data.totalWeight * pricePerTone);
+                salary += data.salary;
             }
-            double finalTotalSalary = totalSalary;
+            double finalTotalSalary = salary;
             runOnUiThread(() -> {
                 tvSalary.setText(String.valueOf(finalTotalSalary));
             });

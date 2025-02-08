@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -63,11 +64,26 @@ public class SettingsActivity extends AppCompatActivity {
                     public void run() {
                         AppDatabase db = MyApp.getDatabase();
                         db.dayDataDAO().deleteAll();
+                        db.appSettingsDAO().deleteAll();
                     }
                 });
                 Toast.makeText(SettingsActivity.this, "База данных очищена", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        Button buttonEditDB = findViewById(R.id.buttonEditDB);
+        buttonEditDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonDeleteDB.setEnabled(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        buttonDeleteDB.setEnabled(false);
+                    }
+                }, 5000);
             }
         });
 

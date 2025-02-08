@@ -21,6 +21,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.jobtracker.database.AppSettings;
 import com.example.jobtracker.database.DayData;
 import com.example.jobtracker.database.MyApp;
 
@@ -29,9 +30,9 @@ import java.util.Locale;
 
 public class GetDataForMonth extends AppCompatActivity {
 
-    private final int costPerPoint = 24;
-    private final int departureFee = 900;
-    private final double pricePerTone = 0.5;
+    private int costPerPoint;
+    private int departureFee;
+    private double pricePerTone;
     TextView pointsForMonth;
     LinearLayout blockwithtext;
     TextView noDataForMonthError;
@@ -77,14 +78,19 @@ public class GetDataForMonth extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int month = spinner.getSelectedItemPosition() + 1;
-                String  year = inputForYear.getText().toString();
-                String pickedData = String.format(Locale.getDefault(),"%s-%02d", year, month);
+                String year = inputForYear.getText().toString();
+
+                // Формируем строку вида "yyyy-MM", например "2025-05"
+                String pickedData = String.format(Locale.getDefault(), "%s-%02d", year, month);
 
                 MyApp.getDbExecutor().execute(new Runnable() {
                     @Override
                     public void run() {
+
+                        // Получаем все записи за выбранный месяц
                         List<DayData> records = MyApp.getDatabase().dayDataDAO().getAllByYearMonth(pickedData);
 
+                        // Обновляем UI: если записей нет, показываем сообщение об отсутствии данных
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -98,28 +104,36 @@ public class GetDataForMonth extends AppCompatActivity {
                             }
                         });
 
-                        int pointsCount = 0;
+                        // Агрегация данных:
+                        // Так как зарплата уже сохранена для каждого дня, просто суммируем её
+                        int totalPoints = 0;
                         int totalWeight = 0;
-                        int additionalPoints = 0;
-                        double salary = 0;
+                        int totalAdditionalPoints = 0;
+                        double totalSalary = 0;
 
-                        for (DayData data: records) {
-                            pointsCount += data.pointsCount;
+                        for (DayData data : records) {
+                            totalPoints += data.pointsCount;
                             totalWeight += data.totalWeight;
-                            additionalPoints += data.additionalPoints;
-                            salary += departureFee + (costPerPoint * (pointsCount + additionalPoints)) + (totalWeight * pricePerTone);
+                            totalAdditionalPoints += data.additionalPoints;
+                            totalSalary += data.salary;
                         }
 
-                        pointsForMonth.setText(String.valueOf(pointsCount));
-                        totalWeightMonth.setText(String.valueOf(totalWeight));
-                        additionalPointsMonth.setText(String.valueOf(additionalPoints));
-                        totalJobPaidMonth.setText(String.valueOf(salary));
-
+                        // Обновляем UI с итоговыми значениями
+                        int finalTotalPoints = totalPoints;
+                        int finalTotalWeight = totalWeight;
+                        int finalTotalAdditionalPoints = totalAdditionalPoints;
+                        double finalTotalSalary = totalSalary;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                pointsForMonth.setText(String.valueOf(finalTotalPoints));
+                                totalWeightMonth.setText(String.valueOf(finalTotalWeight));
+                                additionalPointsMonth.setText(String.valueOf(finalTotalAdditionalPoints));
+                                totalJobPaidMonth.setText(String.format(Locale.getDefault(), "%.2f", finalTotalSalary));
+                            }
+                        });
                     }
                 });
-
-
-
             }
         });
 

@@ -1,21 +1,23 @@
-package com.example.jobtracker.database;
+    package com.example.jobtracker.database;
 
-import static android.icu.text.MessagePattern.ArgType.SELECT;
+    import static android.icu.text.MessagePattern.ArgType.SELECT;
 
-import androidx.room.Dao;
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
-import androidx.room.Query;
+    import androidx.room.Dao;
+    import androidx.room.Insert;
+    import androidx.room.OnConflictStrategy;
+    import androidx.room.Query;
 
-import java.util.List;
+    import java.util.List;
 
-@Dao
-public interface AppSettingsDAO {
+    @Dao
+    public interface AppSettingsDAO {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    long insert(AppSettings data);
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
+        long insert(AppSettings data);
 
-    @Query("SELECT * FROM AppSettings")
-    List<AppSettings> getAll();
+        @Query("SELECT * FROM AppSettings")
+        List<AppSettings> getAll();
 
-}
+        @Query("DELETE FROM AppSettings")
+        void deleteAll();
+    }
