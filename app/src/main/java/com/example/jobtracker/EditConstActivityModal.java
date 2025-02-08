@@ -129,6 +129,8 @@ public class EditConstActivityModal extends DialogFragment {
         buttonSaveNewConst.setEnabled(allFilled);
     }
 
+
+
     @Override
     public void onStart() {
         super.onStart();
