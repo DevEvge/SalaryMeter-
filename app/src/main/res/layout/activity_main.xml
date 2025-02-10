@@ -10,9 +10,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="164dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/rounded_frame"
         android:orientation="vertical">
 
@@ -39,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="18dp"
             android:text="@string/Default_data"
             android:textAlignment="center"
             android:textSize="20sp" />
@@ -47,15 +48,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="286dp"
+        android:layout_marginTop="220dp"
         android:orientation="vertical">
 
 
         <Button
             android:id="@+id/buttonGetDataForDay"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:paddingVertical="15dp"
             android:layout_marginHorizontal="30dp"
             android:text="@string/buttonNewData"
             android:textSize="20sp" />
@@ -63,22 +65,22 @@
         <Button
             android:id="@+id/buttonGetData"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
             android:layout_gravity="center"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="28dp"
-            android:enabled="true"
             android:text="@string/buttonGetData"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonSettings"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
             android:layout_gravity="center"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="28dp"
-            android:enabled="true"
             android:text="@string/buttonSettings"
             android:textSize="20sp" />
     </LinearLayout>

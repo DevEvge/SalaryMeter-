@@ -32,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
     private ExecutorService executor;
 
 
+    //TODO: Подогнать все размеры страниц под реальное устройство
+    //TODO: Почистить код от ненужных импортов и переменных
+    //TODO: Добавить просчет топлива
+    //TODO: Отключить переход с экрана перехода первых констант на главный экран
+    //TODO: Убрать кнопку удаления базы данных
+    //TODO: Очитстить все ошибки которые пишет IDE
+    //TODO: Пересмотреть код\отрефакторить
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
