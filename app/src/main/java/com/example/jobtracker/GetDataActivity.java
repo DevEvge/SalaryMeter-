@@ -31,6 +31,7 @@ public class GetDataActivity extends AppCompatActivity {
         });
 
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
+        getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
         Button buttonGetDataForDay = findViewById(R.id.buttonGetDataForDay);
         buttonGetDataForDay.setOnClickListener(new View.OnClickListener() {

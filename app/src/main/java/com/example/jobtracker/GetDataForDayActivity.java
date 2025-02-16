@@ -61,6 +61,7 @@ public class GetDataForDayActivity extends AppCompatActivity {
         });
 
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
+        getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
         ImageButton buttonArrowBack = findViewById(R.id.arrow_back2);
         buttonArrowBack.setOnClickListener(new View.OnClickListener() {

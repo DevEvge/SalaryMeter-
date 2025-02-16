@@ -41,6 +41,7 @@ public class FirstAddConstants extends AppCompatActivity {
         });
 
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
+        getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
         costPerPointConst = findViewById(R.id.costPerPointConst1);
         departureFeeConst = findViewById(R.id.departureFeeConst1);

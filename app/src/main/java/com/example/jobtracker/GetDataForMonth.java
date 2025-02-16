@@ -52,6 +52,7 @@ public class GetDataForMonth extends AppCompatActivity {
         setContentView(R.layout.activity_get_data_for_month);
 
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
+        getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
         ImageButton buttonArrowBack = findViewById(R.id.arrow_back3);
         buttonArrowBack.setOnClickListener(new View.OnClickListener() {
