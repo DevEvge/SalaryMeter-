@@ -59,8 +59,16 @@ public class MainActivity extends AppCompatActivity {
                 if (constants.isEmpty()) {
                     Intent intent = new Intent(MainActivity.this, FirstAddConstants.class);
                     startActivity(intent);
-
                 }
+            }
+        });
+
+        Button buttonGas = findViewById(R.id.buttonNewGas);
+        buttonGas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NewGasActivity.class);
+                startActivity(intent);
             }
         });
 
