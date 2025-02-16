@@ -27,6 +27,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.jobtracker.database.AppSettings;
 import com.example.jobtracker.database.DayData;
+import com.example.jobtracker.database.GasData;
 import com.example.jobtracker.database.MyApp;
 
 import java.util.List;
@@ -38,6 +39,7 @@ public class GetDataForMonth extends AppCompatActivity {
     private int departureFee;
     private double pricePerTone;
     TextView pointsForMonth;
+    TextView totalGas;
     LinearLayout blockwithtext;
     TextView noDataForMonthError;
     TextView totalWeightMonth;
@@ -77,6 +79,7 @@ public class GetDataForMonth extends AppCompatActivity {
         totalJobPaidMonth = findViewById(R.id.totalJobPaidMonth);
         noDataForMonthError = findViewById(R.id.noDataForMonth);
         blockwithtext = findViewById(R.id.getDataForMonthResult);
+        totalGas = findViewById(R.id.totalGasMonth);
 
 
         Button buttonLoadData = findViewById(R.id.buttonLoadData);
@@ -95,6 +98,7 @@ public class GetDataForMonth extends AppCompatActivity {
 
                         // Получаем все записи за выбранный месяц
                         List<DayData> records = MyApp.getDatabase().dayDataDAO().getAllByYearMonth(pickedData);
+                        List<GasData> gasRecords = MyApp.getDatabase().gasDataDAO().getAllByYearMonth(pickedData);
 
                         // Обновляем UI: если записей нет, показываем сообщение об отсутствии данных
                         runOnUiThread(new Runnable() {
@@ -116,6 +120,7 @@ public class GetDataForMonth extends AppCompatActivity {
                         int totalWeight = 0;
                         int totalAdditionalPoints = 0;
                         double totalSalary = 0;
+                        double totalsGasCost = 0;
 
                         for (DayData data : records) {
                             totalPoints += data.pointsCount;
@@ -123,12 +128,16 @@ public class GetDataForMonth extends AppCompatActivity {
                             totalAdditionalPoints += data.additionalPoints;
                             totalSalary += data.salary;
                         }
+                        for (GasData data : gasRecords) {
+                            totalsGasCost += data.totalFuelCost;
+                        }
 
                         // Обновляем UI с итоговыми значениями
                         int finalTotalPoints = totalPoints;
                         int finalTotalWeight = totalWeight;
                         int finalTotalAdditionalPoints = totalAdditionalPoints;
                         double finalTotalSalary = totalSalary;
+                        double finalTotalGasCost = totalsGasCost;
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -136,6 +145,7 @@ public class GetDataForMonth extends AppCompatActivity {
                                 totalWeightMonth.setText(String.valueOf(finalTotalWeight));
                                 additionalPointsMonth.setText(String.valueOf(finalTotalAdditionalPoints));
                                 totalJobPaidMonth.setText(String.format(Locale.getDefault(), "%.2f", finalTotalSalary));
+                                totalGas.setText(String.format(Locale.getDefault(), "%.2f", finalTotalGasCost));
                             }
                         });
                     }

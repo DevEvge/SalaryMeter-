@@ -46,7 +46,7 @@
 
     <string name="pointsForMonth">Кол-точек за месяц</string>
     <string name="cargoWeightForMonth">Вес за месяц</string>
-    <string name="AdditionalPointsForMonth">Дополнительные точки за месяц</string>
+    <string name="AdditionalPointsForMonth">Доп. точки за месяц</string>
     <string name="TotalJobCostMonth">Прибыль за месяц</string>
 
 
@@ -57,5 +57,6 @@
     <string name="Greeting">Привет! Это приложения для просчета ЗП и ведения статистики о рабочих днях. Для того что бы начать пользоваться приложением заполни поля ниже! </string>
     <string name="gasPrice">Цена топлива</string>
     <string name="gasAmount">Кол-во топлива</string>
+    <string name="totalGasSpend">Сумма за топливо</string>
 
 </resources>
