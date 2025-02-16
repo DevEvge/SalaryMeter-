@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
+
         MyApp.getDbExecutor().execute(new Runnable() {
             @Override
             public void run() {

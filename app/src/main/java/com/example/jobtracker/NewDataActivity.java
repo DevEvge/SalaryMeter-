@@ -55,6 +55,8 @@ public class NewDataActivity extends AppCompatActivity {
             return insets;
         });
 
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
+
         // Инициализация элементов
         inputPointsCount = findViewById(R.id.inputPointsCount);
         inputTotalWeight = findViewById(R.id.inputTotalWeight);

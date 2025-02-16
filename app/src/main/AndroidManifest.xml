@@ -20,12 +20,6 @@
             android:name=".GetDataForMonth"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".EditTodayData"
-            android:exported="false" />
-        <activity
             android:name=".GetDataForDayActivity"
             android:exported="false" />
         <activity

@@ -1,11 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Базовая тема приложения -->
     <style name="Base.Theme.JobTracker" parent="Theme.Material3.DayNight.NoActionBar">
-
         <item name="android:windowBackground">@color/app_background</item>
         <item name="materialButtonStyle">@style/Buttons_style</item>
         <item name="editTextStyle">@style/Custom_inputs_selectors</item>
         <item name="android:textViewStyle">@style/Custom_text</item>
+
 
     </style>
 

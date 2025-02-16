@@ -30,6 +30,8 @@ public class GetDataActivity extends AppCompatActivity {
             return insets;
         });
 
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
+
         Button buttonGetDataForDay = findViewById(R.id.buttonGetDataForDay);
         buttonGetDataForDay.setOnClickListener(new View.OnClickListener() {
             @Override

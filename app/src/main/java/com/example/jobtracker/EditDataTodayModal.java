@@ -21,6 +21,8 @@ public class EditDataTodayModal extends DialogFragment {
         return new EditDataTodayModal();
     }
 
+
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
