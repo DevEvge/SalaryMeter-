@@ -9,7 +9,7 @@
         android:id="@+id/arrow_back3"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:layout_marginHorizontal="20dp"
         android:scaleType="fitCenter"
         android:src="@drawable/navbar___left"
@@ -19,16 +19,16 @@
         android:id="@+id/spinnerMonth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
         android:background="@drawable/input_selector"/>
 
     <EditText
         android:id="@+id/etYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
         android:inputType="number"
         android:digits="0123456789"
         android:maxLength="4"
@@ -38,8 +38,8 @@
         android:id="@+id/buttonLoadData"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/buttonLoadData"
         android:textSize="20sp"/>
 
@@ -54,92 +54,105 @@
         android:visibility="invisible"
         android:layout_marginTop="10dp"/>
 
+
     <LinearLayout
         android:id="@+id/getDataForMonthResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="2dp"
-        android:visibility="invisible"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="20dp"
         android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:visibility="invisible"
         tools:background="@android:color/darker_gray">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:text="@string/pointsForMonth"
-            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/edittextPointsForMonth"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:textSize="20sp"
-            tools:text="Colvo-tocheck" />
+            android:layout_marginTop="10dp"
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:text="@string/cargoWeightForMonth"
-            android:textSize="20sp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/edittextTotalWeightMonth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            tools:text="Ves za den"
-            android:textSize="20sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pointsForDay"
+                android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:text="@string/AdditionalPointsForMonth"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/edittextPointsForMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                tools:text="24" />
 
-        <TextView
-            android:id="@+id/edittextAdditionalPointsMonth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            tools:text="additPoint"
-            android:textSize="20sp" />
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:text="@string/TotalJobCostMonth"
-            android:textSize="20sp" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/totalJobPaidMonth"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cargoWeightForDay"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edittextTotalWeightMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                tools:text="80" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
-            android:textSize="20sp"
-            tools:text="zarplata" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/AdditionalPointsForDay"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edittextAdditionalPointsMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                tools:text="50" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/TotalJobCost"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/totalJobPaidMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                tools:text="5000" />
+
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

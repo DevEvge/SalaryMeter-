@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_marginHorizontal="30dp"
-    android:layout_marginVertical="300dp"
+    android:layout_marginVertical="200dp"
     android:background="@drawable/rounded_modal"
     android:orientation="vertical"
     tools:context=".EditDataTodayModal">

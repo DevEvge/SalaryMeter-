@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/rounded_frame"
         android:orientation="vertical">
@@ -48,7 +48,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="140dp"
         android:orientation="vertical">
 
 
@@ -57,9 +57,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
             android:paddingVertical="15dp"
-            android:layout_marginHorizontal="30dp"
             android:text="@string/buttonNewData"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/buttonNewGas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/buttonNewGas"
             android:textSize="20sp" />
 
         <Button
@@ -68,7 +79,7 @@
             android:layout_height="wrap_content"
             android:paddingVertical="15dp"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="28dp"
             android:text="@string/buttonGetData"
             android:textSize="20sp" />
@@ -79,7 +90,7 @@
             android:layout_height="wrap_content"
             android:paddingVertical="15dp"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="28dp"
             android:text="@string/buttonSettings"
             android:textSize="20sp" />

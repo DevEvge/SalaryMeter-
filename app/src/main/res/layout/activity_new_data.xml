@@ -20,24 +20,14 @@
         android:src="@drawable/navbar___left"
         android:background="@android:color/transparent"/>
 
-    <TextView
-        android:id="@+id/warningMassage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/editWarning"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:visibility="invisible"
-        android:textSize="20sp"
-        android:textColor="@color/error_text"
-        android:layout_marginHorizontal="30dp"/>
+
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/pointsPlaceholder"
         android:textSize="20sp" />
 
@@ -49,13 +39,13 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="8dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="46dp"
         android:text="@string/cargoWeight"
         android:textSize="20sp" />
@@ -66,15 +56,28 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:digits="0123456789"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/warningMassage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editWarning"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:visibility="invisible"
+        android:textSize="20sp"
+        android:textColor="@color/error_text"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
-        android:paddingHorizontal="30dp"
+        android:paddingHorizontal="20dp"
         android:paddingVertical="16dp">
 
         <TextView
@@ -95,7 +98,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="21dp"
         android:text="@string/placeholderForAddPoints"
         android:textSize="20sp" />
@@ -104,7 +107,7 @@
         android:id="@+id/additionalInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="20dp"
         android:inputType="number"
         android:digits="0123456789"
         android:enabled="false"
@@ -116,10 +119,10 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:text="@string/buttonSaveNewData"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:enabled="false"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="20dp"
         android:textSize="20sp"
         android:textColor="@color/text"/>
 

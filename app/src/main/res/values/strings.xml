@@ -2,6 +2,7 @@
     <string name="app_name">JobTracker</string>
     <string name="buttonNewData">Внести данные</string>
     <string name="buttonGetData">Мои данные</string>
+    <string name="buttonNewGas">Топливо</string>
     <string name="buttonSettings">Настройки</string>
     <string name="main_page_block">За этот месяц:</string>
     <string name="Default_jobCost">0</string>
@@ -33,7 +34,7 @@
     <string name="textViewOnGetDayData">Показатели за выбранную дату:</string>
     <string name="pointsForDay">Кол-точек за день</string>
     <string name="cargoWeightForDay">Вес за день</string>
-    <string name="AdditionalPointsForDay">Дополнительные точки</string>
+    <string name="AdditionalPointsForDay">Доп. точки</string>
     <string name="TotalJobCost">Прибыль за день</string>
     <string name="alertNoRecords">Данных за день нету</string>
 

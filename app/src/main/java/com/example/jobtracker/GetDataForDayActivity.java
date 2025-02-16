@@ -149,11 +149,20 @@ public class GetDataForDayActivity extends AppCompatActivity {
                 }
 
 
+                int finalPointsCount = pointsCount;
+                int finalTotalWeight = totalWeight;
+                int finalAdditionalPoints = additionalPoints;
+                double finalSalary = salary;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pointsForDay.setText(String.valueOf(finalPointsCount));
+                        totalWeightForDay.setText(String.valueOf(finalTotalWeight));
+                        additionalPointsForDay.setText(String.valueOf(finalAdditionalPoints));
+                        totalJobCost.setText(String.valueOf(finalSalary));
+                    }
+                });
 
-                pointsForDay.setText(String.valueOf(pointsCount));
-                totalWeightForDay.setText(String.valueOf(totalWeight));
-                additionalPointsForDay.setText(String.valueOf(additionalPoints));
-                totalJobCost.setText(String.valueOf(salary));
             }
         });
     }

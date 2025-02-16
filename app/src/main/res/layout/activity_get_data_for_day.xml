@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
     android:orientation="vertical">
 
     <ImageButton
         android:id="@+id/arrow_back2"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:src="@drawable/navbar___left"
-        android:background="@android:color/transparent"/>
+        android:src="@drawable/navbar___left" />
 
 
     <!-- Не редактируемое поле для даты -->
@@ -22,10 +22,10 @@
         android:id="@+id/inputToPickADate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/inputChoseDate"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
         android:focusable="false"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="50dp"
+        android:hint="@string/inputChoseDate"
         android:inputType="date" />
 
     <!-- Здесь можно разместить другие элементы, например, контейнер для отображения результатов -->
@@ -33,112 +33,122 @@
         android:id="@+id/textViewResults"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:text="@string/textViewOnGetDayData"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:textSize="20sp"
-        android:layout_marginTop="24dp"/>
+        android:text="@string/textViewOnGetDayData"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tvAlertNoRecords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
         android:text="@string/alertNoRecords"
         android:textColor="@color/error_text"
-        android:visibility="invisible"
-        android:gravity="center_horizontal"
         android:textSize="20sp"
-        android:layout_marginTop="24dp"/>
+        android:visibility="invisible" />
 
     <LinearLayout
         android:id="@+id/getDataForDayResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-
-        android:visibility="invisible"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="20dp"
         android:orientation="vertical"
-        android:paddingBottom="40dp"
+        android:paddingBottom="10dp"
+        android:visibility="invisible"
         tools:background="@android:color/darker_gray">
 
-        <TextView
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:text="@string/pointsForDay"
-            android:textSize="20sp" />
+            android:layout_marginTop="10dp"
 
-        <TextView
-            android:id="@+id/edittextPointsForDay"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pointsForDay"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edittextPointsForDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                tools:text="24" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:textSize="20sp"
-            tools:text="Colvo-tocheck" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-        <TextView
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cargoWeightForDay"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edittextTotalWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                tools:text="80" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:text="@string/cargoWeightForDay"
-            android:textSize="20sp" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/edittextTotalWeight"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/AdditionalPointsForDay"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edittextAdditionalPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                tools:text="50" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            tools:text="Ves za den"
-            android:textSize="20sp" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:text="@string/AdditionalPointsForDay"
-            android:textSize="20sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/TotalJobCost"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/edittextAdditionalPoints"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            tools:text="additPoint"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/totalJobPaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                tools:text="5000" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:text="@string/TotalJobCost"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/totalJobPaid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            tools:text="zarplata"
-            android:textSize="20sp" />
-
+        </LinearLayout>
     </LinearLayout>
-
-
 </LinearLayout>
