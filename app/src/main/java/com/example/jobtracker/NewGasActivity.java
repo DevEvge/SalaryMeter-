@@ -12,12 +12,21 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.jobtracker.database.GasData;
+import com.example.jobtracker.database.MyApp;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class NewGasActivity extends AppCompatActivity {
 
@@ -73,6 +82,24 @@ public class NewGasActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .format(new Date());
+
+                String gasAmount = etGasAmount.getText().toString();
+                String gasPrice = etGasPrice.getText().toString();
+
+                double totalGasCost = Double.parseDouble(gasPrice) * Double.parseDouble(gasAmount);
+
+                MyApp.getDbExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        MyApp.getDatabase().gasDataDAO().insert(new GasData(currentDate, totalGasCost));
+                    }
+                });
+
+                Toast.makeText(NewGasActivity.this, "Данные сохранены", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(NewGasActivity.this, MainActivity.class);
+                startActivity(intent);
 
             }
         });

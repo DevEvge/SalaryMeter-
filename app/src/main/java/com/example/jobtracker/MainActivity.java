@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.jobtracker.database.AppSettings;
 import com.example.jobtracker.database.DayData;
+import com.example.jobtracker.database.GasData;
 import com.example.jobtracker.database.MyApp;
 
 import java.util.Calendar;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     //TODO: Убрать кнопку удаления базы данных
     //TODO: Очитстить все ошибки которые пишет IDE
     //TODO: Пересмотреть код\отрефакторить
+    //TODO: При двойном клике быстром страничка открывается два раза
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,12 +136,17 @@ public class MainActivity extends AppCompatActivity {
     private void loadMonthlyData(String yearMonth) {
         MyApp.getDbExecutor().execute(() -> {
             List<DayData> records = MyApp.getDatabase().dayDataDAO().getAllByYearMonth(yearMonth);
+            List<GasData> gasRecords = MyApp.getDatabase().gasDataDAO().getAllByYearMonth(yearMonth);
 
 
             double totalSalary = 0;
             for (DayData data : records) {
                 salary += data.salary;
             }
+            for (GasData data : gasRecords){
+                salary -= data.totalFuelCost;
+            }
+
             double finalTotalSalary = salary;
             runOnUiThread(() -> {
                 tvSalary.setText(String.valueOf(finalTotalSalary));
