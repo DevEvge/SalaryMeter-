@@ -5,6 +5,7 @@ import static android.view.View.VISIBLE;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -52,6 +53,7 @@ public class GetDataForMonth extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_data_for_month);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
         getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));

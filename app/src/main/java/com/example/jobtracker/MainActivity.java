@@ -1,6 +1,7 @@
 package com.example.jobtracker;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     //TODO: Убрать кнопку удаления базы данных
     //TODO: Очитстить все ошибки которые пишет IDE
     //TODO: Пересмотреть код\отрефакторить
+    //TODO: Сделать что бы приложение нельзя было поворачивать
     //TODO: При двойном клике быстром страничка открывается два раза
 
     @Override
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
         getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
