@@ -138,8 +138,8 @@ public class GetDataForMonth extends AppCompatActivity {
                         int finalTotalPoints = totalPoints;
                         int finalTotalWeight = totalWeight;
                         int finalTotalAdditionalPoints = totalAdditionalPoints;
-                        double finalTotalSalary = totalSalary;
                         double finalTotalGasCost = totalsGasCost;
+                        double finalTotalSalary = totalSalary - totalsGasCost;
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
