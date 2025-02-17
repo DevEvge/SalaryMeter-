@@ -58,5 +58,6 @@
     <string name="gasPrice">Цена топлива</string>
     <string name="gasAmount">Кол-во топлива</string>
     <string name="totalGasSpend">Сумма за топливо</string>
+    <string name="changeDataForDate">Изменит данные за день</string>
 
 </resources>

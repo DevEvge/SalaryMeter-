@@ -151,4 +151,17 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonChangeDataForDay"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:text="@string/changeDataForDate"
+        android:layout_marginTop="170dp"
+        android:layout_gravity="center"
+        android:enabled="false"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/text"/>
+
 </LinearLayout>
