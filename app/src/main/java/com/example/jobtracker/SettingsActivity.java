@@ -70,6 +70,7 @@ public class SettingsActivity extends AppCompatActivity {
                         AppDatabase db = MyApp.getDatabase();
                         db.dayDataDAO().deleteAll();
                         db.appSettingsDAO().deleteAll();
+                        db.gasDataDAO().deleteAll();
                     }
                 });
                 Toast.makeText(SettingsActivity.this, "База данных очищена", Toast.LENGTH_SHORT).show();
