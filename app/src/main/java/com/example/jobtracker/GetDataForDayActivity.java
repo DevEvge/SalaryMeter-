@@ -9,9 +9,12 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,6 +27,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.jobtracker.database.AppDatabase;
 import com.example.jobtracker.database.AppSettings;
 import com.example.jobtracker.database.DayData;
 import com.example.jobtracker.database.MyApp;
@@ -43,12 +47,18 @@ public class GetDataForDayActivity extends AppCompatActivity {
     private TextView alertError;
     private LinearLayout dayDataLayout;
 
+    private String selectedDate;
     private EditText editTextDate;
     private TextView pointsForDay;
     private TextView totalWeightForDay;
     private TextView additionalPointsForDay;
     private TextView totalJobCost;
     private TextView textViewResults;
+    private Button buttonChangeDataForDay;
+
+    private List<DayData> dayDataByData;
+
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +71,8 @@ public class GetDataForDayActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        db = MyApp.getDatabase();
 
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
         getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
@@ -85,6 +97,27 @@ public class GetDataForDayActivity extends AppCompatActivity {
         alertError = findViewById(R.id.tvAlertNoRecords);
         dayDataLayout = findViewById(R.id.getDataForDayResult);
 
+        buttonChangeDataForDay = findViewById(R.id.buttonChangeDataForDay);
+
+        TextWatcher inputWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkInputFields();
+            }
+        };
+
+        editTextDate.addTextChangedListener(inputWatcher);
+
 
         editTextDate.setOnClickListener(view -> {
             Calendar calendar = Calendar.getInstance();
@@ -99,7 +132,7 @@ public class GetDataForDayActivity extends AppCompatActivity {
                         @Override
                         public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
                             // Форматируем выбранную дату. Обратите внимание, что selectedMonth + 1, так как месяцы нумеруются с 0.
-                            String selectedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d",
+                            selectedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d",
                                     selectedYear, selectedMonth + 1, selectedDay);
                             editTextDate.setText(selectedDate);
 
@@ -189,5 +222,27 @@ public class GetDataForDayActivity extends AppCompatActivity {
             }
         }
         return super.dispatchTouchEvent(ev);
+    }
+
+    private void checkInputFields() {
+        String pointsStr = editTextDate.getText().toString().trim();
+        MyApp.getDbExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                dayDataByData = db.dayDataDAO().getDayDataByData(selectedDate);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        boolean allFilled = !pointsStr.isEmpty() && !dayDataByData.isEmpty();
+                        buttonChangeDataForDay.setEnabled(allFilled);
+                    }
+                });
+            }
+        });
+
+
+
+
     }
 }
