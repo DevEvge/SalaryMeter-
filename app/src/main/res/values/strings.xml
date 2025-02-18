@@ -59,5 +59,6 @@
     <string name="gasAmount">Кол-во топлива</string>
     <string name="totalGasSpend">Сумма за топливо</string>
     <string name="changeDataForDate">Изменит данные за день</string>
+    <string name="changeDayData">Изменить данные</string>
 
 </resources>

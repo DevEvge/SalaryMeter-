@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginVertical="100dp"
+    android:layout_marginHorizontal="30dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_modal"
+    tools:context=".EditConstActivityModal">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="50dp"
+            android:text="@string/changeDayData"
+            android:textSize="20sp"
+            />
+
+        <ImageButton
+            android:id="@+id/x_close5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close"
+            android:background="@android:color/transparent"/>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/pointsPlaceholder"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"/>
+
+
+    <EditText
+        android:id="@+id/etPointsCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:digits="0123456789"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/cargoWeight"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="15dp"/>
+
+
+    <EditText
+        android:id="@+id/etWeightCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:digits="0123456789"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/placeholderForAddPoints"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="15dp"/>
+
+
+    <EditText
+        android:id="@+id/etAdditionalPointsCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:digits=".0123456789"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"/>
+
+    <Button
+        android:id="@+id/buttonSaveEditedDayData"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:enabled="false"
+        android:text="@string/buttonSaveConst"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"/>
+
+
+</LinearLayout>

@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.jobtracker.database.AppDatabase;
 import com.example.jobtracker.database.AppSettings;
@@ -99,6 +100,16 @@ public class GetDataForDayActivity extends AppCompatActivity {
 
         buttonChangeDataForDay = findViewById(R.id.buttonChangeDataForDay);
 
+        buttonChangeDataForDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditDayDataModal dialogFragment = EditDayDataModal.newInstance();
+                FragmentManager fm = getSupportFragmentManager();
+
+                dialogFragment.show(fm, "EditDayDataDialog");
+            }
+        });
+
         TextWatcher inputWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -134,6 +145,7 @@ public class GetDataForDayActivity extends AppCompatActivity {
                             // Форматируем выбранную дату. Обратите внимание, что selectedMonth + 1, так как месяцы нумеруются с 0.
                             selectedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d",
                                     selectedYear, selectedMonth + 1, selectedDay);
+                            Config.setCurrentData(selectedDate);
                             editTextDate.setText(selectedDate);
 
                             alertError.setVisibility(INVISIBLE);

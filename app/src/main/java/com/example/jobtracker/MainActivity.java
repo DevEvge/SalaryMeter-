@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     //TODO: Пересмотреть код\отрефакторить
     //TODO: Сделать что бы приложение нельзя было поворачивать
     //TODO: При двойном клике быстром страничка открывается два раза
+    //TODO: При открытии приложения со свернутого состояния обновлять информацию на экране
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
