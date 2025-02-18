@@ -15,7 +15,7 @@ public interface GasDataDAO {
     @Query("SELECT * FROM GasData WHERE date LIKE :yearMonth || '%'")
     List<GasData> getAllByYearMonth(String yearMonth);
 
-    @Query("DELETE FROM DayData")
+    @Query("DELETE FROM GasData")
     void deleteAll();
 
 }
