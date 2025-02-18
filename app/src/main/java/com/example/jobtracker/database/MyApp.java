@@ -20,7 +20,7 @@ public class MyApp extends Application {
                 getApplicationContext(),
                 AppDatabase.class,
                 "my_database_name"
-        ).fallbackToDestructiveMigration().build();
+        ).build();
 
         dbExecutor = Executors.newSingleThreadExecutor();
     }
