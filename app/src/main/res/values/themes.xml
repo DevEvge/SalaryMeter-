@@ -6,7 +6,6 @@
         <item name="editTextStyle">@style/Custom_inputs_selectors</item>
         <item name="android:textViewStyle">@style/Custom_text</item>
 
-
     </style>
 
     <style name="Theme.JobTracker" parent="Base.Theme.JobTracker" />
