@@ -1,6 +1,5 @@
 package com.example.jobtracker;
 
-import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 import android.content.Context;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +26,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.jobtracker.database.AppDatabase;
 import com.example.jobtracker.database.AppSettings;
 import com.example.jobtracker.database.DayData;
 import com.example.jobtracker.database.MyApp;
