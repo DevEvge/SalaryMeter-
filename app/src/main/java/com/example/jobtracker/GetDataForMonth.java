@@ -145,7 +145,7 @@ public class GetDataForMonth extends AppCompatActivity {
 
                         // Обновляем UI с итоговыми значениями
                         int finalTotalPoints = totalPoints;
-                        double finalTotalWeight = totalWeight;
+                        String finalTotalWeight = String.format(Locale.US, "%.2f", totalWeight);
                         int finalTotalAdditionalPoints = totalAdditionalPoints;
                         double finalTotalGasCost = totalsGasCost;
                         double finalTotalSalary = totalSalary - totalsGasCost;

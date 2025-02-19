@@ -240,23 +240,7 @@ public class GetDataForDayActivity extends AppCompatActivity {
 
     private void checkInputFields() {
         String pointsStr = editTextDate.getText().toString().trim();
-        MyApp.getDbExecutor().execute(new Runnable() {
-            @Override
-            public void run() {
-                dayDataByData = db.dayDataDAO().getDayDataByData(selectedDate);
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        boolean allFilled = !pointsStr.isEmpty() && !dayDataByData.isEmpty();
-                        buttonChangeDataForDay.setEnabled(allFilled);
-                    }
-                });
-            }
-        });
-
-
-
-
+        boolean allFilled = !pointsStr.isEmpty();
+        buttonChangeDataForDay.setEnabled(allFilled);
     }
 }

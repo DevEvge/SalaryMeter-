@@ -86,7 +86,7 @@ public class EditDayDataModal extends DialogFragment {
                 String totalAdditionalPointsCount = totalAddPoints.getText().toString();
 
                 int pointsCount = !totalPointsCount.isEmpty() ? Integer.parseInt(totalPointsCount) : 0;
-                int totalWeight = !totalWeightCount.isEmpty() ? Integer.parseInt(totalWeightCount) : 0;
+                double totalWeight = !totalWeightCount.isEmpty() ? Double.parseDouble(totalWeightCount) : 0;
                 int additionalPoints = !totalAdditionalPointsCount.isEmpty() ? Integer.parseInt(totalAdditionalPointsCount) : 0;
 
                 MyApp.getDbExecutor().execute(new Runnable() {
