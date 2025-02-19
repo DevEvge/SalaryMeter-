@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ public class EditDayDataModal extends DialogFragment {
     private EditText totalWeight;
     private EditText totalAddPoints;
     private Button buttonSave;
+    private ImageButton xButton;
 
     public static EditDayDataModal newInstance() {
         return new EditDayDataModal();
@@ -57,6 +59,14 @@ public class EditDayDataModal extends DialogFragment {
         totalWeight = view.findViewById(R.id.etWeightCount);
         totalAddPoints = view.findViewById(R.id.etAdditionalPointsCount);
         buttonSave = view.findViewById(R.id.buttonSaveEditedDayData);
+        xButton = view.findViewById(R.id.x_close5);
+
+        xButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
 
         TextWatcher inputWatcher = new TextWatcher() {
             @Override
