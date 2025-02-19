@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         Calendar calendar = Calendar.getInstance();
 
         int year = calendar.get(Calendar.YEAR);
@@ -136,28 +135,34 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        String yearMonth = String.format(Locale.getDefault(), "%04d-%02d", year, month);
+        loadMonthlyData(yearMonth);
+    }
+
     private void loadMonthlyData(String yearMonth) {
         MyApp.getDbExecutor().execute(() -> {
+            double salary = 0;
             List<DayData> records = MyApp.getDatabase().dayDataDAO().getAllByYearMonth(yearMonth);
             List<GasData> gasRecords = MyApp.getDatabase().gasDataDAO().getAllByYearMonth(yearMonth);
-
-
 
             for (DayData data : records) {
                 salary += data.salary;
             }
-            for (GasData data : gasRecords){
+            for (GasData data : gasRecords) {
                 salary -= data.totalFuelCost;
             }
 
-            String finalTotalSalary = String.format(Locale.US,"%.2f", salary) ;
+            String finalTotalSalary = String.format(Locale.US, "%.2f", salary);
 
             runOnUiThread(() -> {
                 tvSalary.setText(finalTotalSalary);
             });
-
         });
     }
-
-
 }
