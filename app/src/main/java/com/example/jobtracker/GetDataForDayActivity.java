@@ -84,7 +84,8 @@ public class GetDataForDayActivity extends AppCompatActivity {
         buttonArrowBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GetDataForDayActivity.this, GetDataActivity.class);
+                Intent intent = new Intent(GetDataForDayActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
