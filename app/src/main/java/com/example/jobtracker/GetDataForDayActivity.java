@@ -180,7 +180,7 @@ public class GetDataForDayActivity extends AppCompatActivity {
 
 
                 int pointsCount = 0;
-                int totalWeight = 0;
+                double totalWeight = 0;
                 int additionalPoints = 0;
                 double salary = 0;
 
@@ -199,7 +199,7 @@ public class GetDataForDayActivity extends AppCompatActivity {
 
 
                 int finalPointsCount = pointsCount;
-                int finalTotalWeight = totalWeight;
+                double finalTotalWeight = totalWeight;
                 int finalAdditionalPoints = additionalPoints;
                 double finalSalary = salary;
                 runOnUiThread(new Runnable() {

@@ -119,7 +119,7 @@ public class GetDataForMonth extends AppCompatActivity {
                         // Агрегация данных:
                         // Так как зарплата уже сохранена для каждого дня, просто суммируем её
                         int totalPoints = 0;
-                        int totalWeight = 0;
+                        double totalWeight = 0;
                         int totalAdditionalPoints = 0;
                         double totalSalary = 0;
                         double totalsGasCost = 0;
@@ -136,7 +136,7 @@ public class GetDataForMonth extends AppCompatActivity {
 
                         // Обновляем UI с итоговыми значениями
                         int finalTotalPoints = totalPoints;
-                        int finalTotalWeight = totalWeight;
+                        double finalTotalWeight = totalWeight;
                         int finalTotalAdditionalPoints = totalAdditionalPoints;
                         double finalTotalGasCost = totalsGasCost;
                         double finalTotalSalary = totalSalary - totalsGasCost;

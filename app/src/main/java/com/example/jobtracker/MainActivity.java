@@ -35,11 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     //TODO: Почистить код от ненужных импортов и переменных
-    //TODO: Добавить просчет топлива
     //TODO: Убрать кнопку удаления базы данных
     //TODO: Очитстить все ошибки которые пишет IDE
     //TODO: Пересмотреть код\отрефакторить
-    //TODO: Сделать что бы приложение нельзя было поворачивать
     //TODO: При двойном клике быстром страничка открывается два раза
     //TODO: При открытии приложения со свернутого состояния обновлять информацию на экране
 
@@ -144,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             List<GasData> gasRecords = MyApp.getDatabase().gasDataDAO().getAllByYearMonth(yearMonth);
 
 
-            double totalSalary = 0;
+
             for (DayData data : records) {
                 salary += data.salary;
             }
@@ -152,9 +150,10 @@ public class MainActivity extends AppCompatActivity {
                 salary -= data.totalFuelCost;
             }
 
-            double finalTotalSalary = salary;
+            String finalTotalSalary = String.format(Locale.US,"%.2f", salary) ;
+
             runOnUiThread(() -> {
-                tvSalary.setText(String.valueOf(finalTotalSalary));
+                tvSalary.setText(finalTotalSalary);
             });
 
         });

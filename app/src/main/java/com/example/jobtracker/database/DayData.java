@@ -12,11 +12,11 @@ public class DayData {
     public String date;
     public double salary;
     public int pointsCount;
-    public int totalWeight;
+    public double totalWeight;
     public int additionalPoints;
 
 
-    public DayData(int pointsCount, int totalWeight, int additionalPoints, String date, double salary) {
+    public DayData(int pointsCount, double totalWeight, int additionalPoints, String date, double salary) {
         this.pointsCount = pointsCount;
         this.totalWeight = totalWeight;
         this.salary = salary;

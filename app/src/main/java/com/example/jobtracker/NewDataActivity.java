@@ -130,7 +130,7 @@ public class NewDataActivity extends AppCompatActivity {
                 String additionalPointsStr = inputAdditional.getText().toString();
 
                 int pointsCount = !pointsCountStr.isEmpty() ? Integer.parseInt(pointsCountStr) : 0;
-                int totalWeight = !totalWeightStr.isEmpty() ? Integer.parseInt(totalWeightStr) : 0;
+                double totalWeight = !totalWeightStr.isEmpty() ? Double.parseDouble(totalWeightStr) : 0;
                 int additionalPoints = !additionalPointsStr.isEmpty() ? Integer.parseInt(additionalPointsStr) : 0;
 
                 String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
