@@ -21,8 +21,6 @@ public class EditDataTodayModal extends DialogFragment {
         return new EditDataTodayModal();
     }
 
-
-
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -40,31 +38,17 @@ public class EditDataTodayModal extends DialogFragment {
         View view = inflater.inflate(R.layout.activity_edit_today_data_modal, container, false);
 
         ImageButton btnClose = view.findViewById(R.id.x_close1);
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        btnClose.setOnClickListener(v -> dismiss());
 
         Button buttonEditData = view.findViewById(R.id.buttonEditDataToday);
-        buttonEditData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(requireActivity(), NewDataActivity.class);
-                Config.edit = true;
-                startActivity(intent);
-            }
+        buttonEditData.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), NewDataActivity.class);
+            Config.edit = true;
+            startActivity(intent);
         });
 
         Button buttonClose = view.findViewById(R.id.button_cancelEditing);
-        buttonClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-
+        buttonClose.setOnClickListener(v -> dismiss());
 
         return view;
     }
@@ -79,5 +63,4 @@ public class EditDataTodayModal extends DialogFragment {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
     }
-
 }

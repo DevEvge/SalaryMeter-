@@ -61,22 +61,15 @@ public class EditDayDataModal extends DialogFragment {
         buttonSave = view.findViewById(R.id.buttonSaveEditedDayData);
         xButton = view.findViewById(R.id.x_close5);
 
-        xButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        xButton.setOnClickListener(v -> dismiss());
 
         TextWatcher inputWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -88,46 +81,33 @@ public class EditDayDataModal extends DialogFragment {
         totalPoints.addTextChangedListener(inputWatcher);
         totalWeight.addTextChangedListener(inputWatcher);
 
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String totalPointsCount = totalPoints.getText().toString();
-                String totalWeightCount = totalWeight.getText().toString();
-                String totalAdditionalPointsCount = totalAddPoints.getText().toString();
+        buttonSave.setOnClickListener(v -> {
+            String totalPointsCount = totalPoints.getText().toString();
+            String totalWeightCount = totalWeight.getText().toString();
+            String totalAdditionalPointsCount = totalAddPoints.getText().toString();
 
-                int pointsCount = !totalPointsCount.isEmpty() ? Integer.parseInt(totalPointsCount) : 0;
-                double totalWeight = !totalWeightCount.isEmpty() ? Double.parseDouble(totalWeightCount) : 0;
-                int additionalPoints = !totalAdditionalPointsCount.isEmpty() ? Integer.parseInt(totalAdditionalPointsCount) : 0;
+            int pointsCount = !totalPointsCount.isEmpty() ? Integer.parseInt(totalPointsCount) : 0;
+            double totalWeight = !totalWeightCount.isEmpty() ? Double.parseDouble(totalWeightCount) : 0;
+            int additionalPoints = !totalAdditionalPointsCount.isEmpty() ? Integer.parseInt(totalAdditionalPointsCount) : 0;
 
-                MyApp.getDbExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        List<AppSettings> settingsList = MyApp.getDatabase().appSettingsDAO().getAll();
+            MyApp.getDbExecutor().execute(() -> {
+                AppSettings constant = MyApp.getDatabase().appSettingsDAO().getSettings();
 
-                        double salary = 0;
-                        if (!settingsList.isEmpty()) {
+                double salary = constant.departureFee +
+                        (constant.costPerPoint * (pointsCount + additionalPoints)) +
+                        (totalWeight * constant.pricePerTone);
 
-                            AppSettings constant = settingsList.get(0);
-                            salary = constant.departureFee +
-                                    (constant.costPerPoint * (pointsCount + additionalPoints)) +
-                                    (totalWeight * constant.pricePerTone);
-                        }
+                DayData data = new DayData(pointsCount, totalWeight, additionalPoints, currentData, salary);
+                MyApp.getDatabase().dayDataDAO().insert(data);
 
-
-                        DayData data = new DayData(pointsCount, totalWeight, additionalPoints, currentData, salary);
-                        MyApp.getDatabase().dayDataDAO().insert(data);
-
-                        requireActivity().runOnUiThread(() -> {
-                            Toast.makeText(requireActivity(), "Данные сохранены", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(requireActivity(), MainActivity.class);
-                            startActivity(intent);
-                            dismiss();
-                        });
-                    }
+                requireActivity().runOnUiThread(() -> {
+                    Toast.makeText(requireActivity(), "Данные сохранены", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(requireActivity(), MainActivity.class);
+                    startActivity(intent);
+                    dismiss();
                 });
-            }
+            });
         });
-
         return view;
     }
 
@@ -146,8 +126,6 @@ public class EditDayDataModal extends DialogFragment {
         String pointsStr = totalPoints.getText().toString().trim();
         String totalWeightStr = totalWeight.getText().toString().trim();
 
-
-        // Если все поля непустые, кнопка активна, иначе — неактивна
         boolean allFilled = !pointsStr.isEmpty() && !totalWeightStr.isEmpty();
         buttonSave.setEnabled(allFilled);
     }

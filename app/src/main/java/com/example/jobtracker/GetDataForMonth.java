@@ -32,12 +32,9 @@ import java.util.Locale;
 
 public class GetDataForMonth extends AppCompatActivity {
 
-    private int costPerPoint;
-    private int departureFee;
-    private double pricePerTone;
     TextView pointsForMonth;
     TextView totalGas;
-    LinearLayout blockwithtext;
+    LinearLayout blockWithText;
     TextView noDataForMonthError;
     TextView totalWeightMonth;
     TextView additionalPointsMonth;
@@ -58,16 +55,11 @@ public class GetDataForMonth extends AppCompatActivity {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
 
-
-
         ImageButton buttonArrowBack = findViewById(R.id.arrow_back3);
-        buttonArrowBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GetDataForMonth.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
+        buttonArrowBack.setOnClickListener(v -> {
+            Intent intent = new Intent(GetDataForMonth.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
 
         Spinner spinner = findViewById(R.id.spinnerMonth);
@@ -85,79 +77,61 @@ public class GetDataForMonth extends AppCompatActivity {
         additionalPointsMonth = findViewById(R.id.edittextAdditionalPointsMonth);
         totalJobPaidMonth = findViewById(R.id.totalJobPaidMonth);
         noDataForMonthError = findViewById(R.id.noDataForMonth);
-        blockwithtext = findViewById(R.id.getDataForMonthResult);
+        blockWithText = findViewById(R.id.getDataForMonthResult);
         totalGas = findViewById(R.id.totalGasMonth);
 
 
         Button buttonLoadData = findViewById(R.id.buttonLoadData);
-        buttonLoadData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int month = spinner.getSelectedItemPosition() + 1;
-                String year = inputForYear.getText().toString();
+        buttonLoadData.setOnClickListener(v -> {
+            int month1 = spinner.getSelectedItemPosition() + 1;
+            String year1 = inputForYear.getText().toString();
 
-                // Формируем строку вида "yyyy-MM", например "2025-05"
-                String pickedData = String.format(Locale.getDefault(), "%s-%02d", year, month);
+            String pickedData = String.format(Locale.getDefault(), "%s-%02d", year1, month1);
 
-                MyApp.getDbExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
+            MyApp.getDbExecutor().execute(() -> {
+                List<DayData> records = MyApp.getDatabase().dayDataDAO().getAllByYearMonth(pickedData);
+                List<GasData> gasRecords = MyApp.getDatabase().gasDataDAO().getAllByYearMonth(pickedData);
 
-                        // Получаем все записи за выбранный месяц
-                        List<DayData> records = MyApp.getDatabase().dayDataDAO().getAllByYearMonth(pickedData);
-                        List<GasData> gasRecords = MyApp.getDatabase().gasDataDAO().getAllByYearMonth(pickedData);
-
-                        // Обновляем UI: если записей нет, показываем сообщение об отсутствии данных
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (records == null || records.isEmpty()) {
-                                    noDataForMonthError.setVisibility(VISIBLE);
-                                    blockwithtext.setVisibility(INVISIBLE);
-                                } else {
-                                    blockwithtext.setVisibility(VISIBLE);
-                                    noDataForMonthError.setVisibility(INVISIBLE);
-                                }
-                            }
-                        });
-
-                        // Агрегация данных:
-                        // Так как зарплата уже сохранена для каждого дня, просто суммируем её
-                        int totalPoints = 0;
-                        double totalWeight = 0;
-                        int totalAdditionalPoints = 0;
-                        double totalSalary = 0;
-                        double totalsGasCost = 0;
-
-                        for (DayData data : records) {
-                            totalPoints += data.pointsCount;
-                            totalWeight += data.totalWeight;
-                            totalAdditionalPoints += data.additionalPoints;
-                            totalSalary += data.salary;
-                        }
-                        for (GasData data : gasRecords) {
-                            totalsGasCost += data.totalFuelCost;
-                        }
-
-                        // Обновляем UI с итоговыми значениями
-                        int finalTotalPoints = totalPoints;
-                        String finalTotalWeight = String.format(Locale.US, "%.2f", totalWeight);
-                        int finalTotalAdditionalPoints = totalAdditionalPoints;
-                        double finalTotalGasCost = totalsGasCost;
-                        double finalTotalSalary = totalSalary - totalsGasCost;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                pointsForMonth.setText(String.valueOf(finalTotalPoints));
-                                totalWeightMonth.setText(finalTotalWeight);
-                                additionalPointsMonth.setText(String.valueOf(finalTotalAdditionalPoints));
-                                totalJobPaidMonth.setText(String.format(Locale.getDefault(), "%.2f", finalTotalSalary));
-                                totalGas.setText(String.format(Locale.getDefault(), "%.2f", finalTotalGasCost));
-                            }
-                        });
+                runOnUiThread(() -> {
+                    if (records == null || records.isEmpty()) {
+                        noDataForMonthError.setVisibility(VISIBLE);
+                        blockWithText.setVisibility(INVISIBLE);
+                    } else {
+                        blockWithText.setVisibility(VISIBLE);
+                        noDataForMonthError.setVisibility(INVISIBLE);
                     }
                 });
-            }
+
+                int totalPoints = 0;
+                double totalWeight = 0;
+                int totalAdditionalPoints = 0;
+                double totalSalary = 0;
+                double totalsGasCost = 0;
+
+                for (DayData data : records) {
+                    totalPoints += data.pointsCount;
+                    totalWeight += data.totalWeight;
+                    totalAdditionalPoints += data.additionalPoints;
+                    totalSalary += data.salary;
+                }
+                for (GasData data : gasRecords) {
+                    totalsGasCost += data.totalFuelCost;
+                }
+
+                int finalTotalPoints = totalPoints;
+                String finalTotalWeight = String.format(Locale.US, "%.2f", totalWeight);
+                int finalTotalAdditionalPoints = totalAdditionalPoints;
+                double finalTotalGasCost = totalsGasCost;
+                double finalTotalSalary = totalSalary - totalsGasCost;
+
+                runOnUiThread(() -> {
+                    pointsForMonth.setText(String.valueOf(finalTotalPoints));
+                    totalWeightMonth.setText(finalTotalWeight);
+                    additionalPointsMonth.setText(String.valueOf(finalTotalAdditionalPoints));
+                    totalJobPaidMonth.setText(String.format(Locale.getDefault(), "%.2f", finalTotalSalary));
+                    totalGas.setText(String.format(Locale.getDefault(), "%.2f", finalTotalGasCost));
+                });
+            });
         });
     }
 
@@ -169,7 +143,6 @@ public class GetDataForMonth extends AppCompatActivity {
                 Rect outRect = new Rect();
                 v.getGlobalVisibleRect(outRect);
                 if (!outRect.contains((int) ev.getRawX(), (int) ev.getRawY())) {
-                    // Если касание вне EditText – снимаем фокус и скрываем клавиатуру
                     v.clearFocus();
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     if (imm != null) {

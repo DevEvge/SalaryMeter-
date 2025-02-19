@@ -37,59 +37,37 @@ public class SettingsActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
         ImageButton buttonArrowBack = findViewById(R.id.arrow_back3);
-        buttonArrowBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
+        buttonArrowBack.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
 
         Button buttonChangeConst = findViewById(R.id.buttonChangeConstant);
-        buttonChangeConst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        buttonChangeConst.setOnClickListener(v -> {
+            EditConstActivityModal dialogFragment = EditConstActivityModal.newInstance();
+            FragmentManager fm = getSupportFragmentManager();
 
-                EditConstActivityModal dialogFragment = EditConstActivityModal.newInstance();
-                FragmentManager fm = getSupportFragmentManager();
-
-                dialogFragment.show(fm, "EditConstDialog");
-            }
+            dialogFragment.show(fm, "EditConstDialog");
         });
 
         Button buttonDeleteDB = findViewById(R.id.buttonDeleteDB);
-        buttonDeleteDB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MyApp.getDbExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        AppDatabase db = MyApp.getDatabase();
-                        db.dayDataDAO().deleteAll();
-                        db.appSettingsDAO().deleteAll();
-                        db.gasDataDAO().deleteAll();
-                    }
-                });
-                Toast.makeText(SettingsActivity.this, "База данных очищена", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        buttonDeleteDB.setOnClickListener(v -> {
+            MyApp.getDbExecutor().execute(() -> {
+                AppDatabase db = MyApp.getDatabase();
+                db.dayDataDAO().deleteAll();
+                db.appSettingsDAO().deleteAll();
+                db.gasDataDAO().deleteAll();
+            });
+            Toast.makeText(SettingsActivity.this, "База данных очищена", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+            startActivity(intent);
         });
 
         Button buttonEditDB = findViewById(R.id.buttonEditDB);
-        buttonEditDB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonDeleteDB.setEnabled(true);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        buttonDeleteDB.setEnabled(false);
-                    }
-                }, 5000);
-            }
+        buttonEditDB.setOnClickListener(v -> {
+            buttonDeleteDB.setEnabled(true);
+            new Handler().postDelayed(() -> buttonDeleteDB.setEnabled(false), 5000);
         });
-
     }
 }

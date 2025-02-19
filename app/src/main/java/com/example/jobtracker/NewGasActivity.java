@@ -54,13 +54,10 @@ public class NewGasActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
         arrowBack = findViewById(R.id.arrow_back5);
-        arrowBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NewGasActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
+        arrowBack.setOnClickListener(v -> {
+            Intent intent = new Intent(NewGasActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
 
         TextWatcher inputWatcher = new TextWatcher() {
@@ -81,31 +78,22 @@ public class NewGasActivity extends AppCompatActivity {
         etGasAmount.addTextChangedListener(inputWatcher);
         etGasPrice.addTextChangedListener(inputWatcher);
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                        .format(new Date());
+        btnSave.setOnClickListener(v -> {
+            String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    .format(new Date());
 
-                String gasAmount = etGasAmount.getText().toString();
-                String gasPrice = etGasPrice.getText().toString();
+            String gasAmount = etGasAmount.getText().toString();
+            String gasPrice = etGasPrice.getText().toString();
 
-                double totalGasCost = Double.parseDouble(gasPrice) * Double.parseDouble(gasAmount);
+            double totalGasCost = Double.parseDouble(gasPrice) * Double.parseDouble(gasAmount);
 
-                MyApp.getDbExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        MyApp.getDatabase().gasDataDAO().insert(new GasData(currentDate, totalGasCost));
-                    }
-                });
+            MyApp.getDbExecutor().execute(() -> MyApp.getDatabase().gasDataDAO().insert(new GasData(currentDate, totalGasCost)));
 
-                Toast.makeText(NewGasActivity.this, "Данные сохранены", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(NewGasActivity.this, MainActivity.class);
-                startActivity(intent);
+            Toast.makeText(NewGasActivity.this, "Данные сохранены", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(NewGasActivity.this, MainActivity.class);
+            startActivity(intent);
 
-            }
         });
-
     }
 
     private void checkInputFields() {
@@ -124,7 +112,6 @@ public class NewGasActivity extends AppCompatActivity {
                 Rect outRect = new Rect();
                 v.getGlobalVisibleRect(outRect);
                 if (!outRect.contains((int) ev.getRawX(), (int) ev.getRawY())) {
-                    // Если касание вне EditText – снимаем фокус и скрываем клавиатуру
                     v.clearFocus();
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     if (imm != null) {
@@ -135,5 +122,4 @@ public class NewGasActivity extends AppCompatActivity {
         }
         return super.dispatchTouchEvent(ev);
     }
-
 }

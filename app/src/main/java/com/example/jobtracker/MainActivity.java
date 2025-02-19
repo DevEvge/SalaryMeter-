@@ -26,12 +26,6 @@ import java.util.concurrent.ExecutorService;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvSalary;
-    private int costPerPoint;
-    private int departureFee;
-    private double pricePerTone;
-    private double salary;
-    private ExecutorService executor;
-
 
     //TODO: Почистить код от ненужных импортов и переменных
     //TODO: Убрать кнопку удаления базы данных
@@ -56,29 +50,21 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
         getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
-        MyApp.getDbExecutor().execute(new Runnable() {
-            @Override
-            public void run() {
-                List<AppSettings> constants = MyApp.getDatabase().appSettingsDAO().getAll();
-                if (constants.isEmpty()) {
-                    Intent intent = new Intent(MainActivity.this, FirstAddConstants.class);
-                    startActivity(intent);
-                }
-            }
-        });
-
-        Button buttonGas = findViewById(R.id.buttonNewGas);
-        buttonGas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NewGasActivity.class);
+        MyApp.getDbExecutor().execute(() -> {
+            AppSettings constants = MyApp.getDatabase().appSettingsDAO().getSettings();
+            if (constants == null) {
+                Intent intent = new Intent(MainActivity.this, FirstAddConstants.class);
                 startActivity(intent);
             }
         });
 
+        Button buttonGas = findViewById(R.id.buttonNewGas);
+        buttonGas.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, NewGasActivity.class);
+            startActivity(intent);
+        });
 
         Calendar calendar = Calendar.getInstance();
-
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -92,45 +78,29 @@ public class MainActivity extends AppCompatActivity {
         loadMonthlyData(yearMonth);
 
         Button buttonNewData = findViewById(R.id.buttonGetDataForDay);
-        buttonNewData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MyApp.getDbExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        List<DayData> dayDataByData = MyApp.getDatabase().dayDataDAO().getDayDataByData(currentDay);
-                        if (dayDataByData.isEmpty()) {
-                            Intent intent = new Intent(MainActivity.this, NewDataActivity.class);
-                            startActivity(intent);
-                        } else {
-                            EditDataTodayModal dialogFragment = EditDataTodayModal.newInstance();
-                            FragmentManager fm = getSupportFragmentManager();
+        buttonNewData.setOnClickListener(v -> MyApp.getDbExecutor().execute(() -> {
+            List<DayData> dayDataByData = MyApp.getDatabase().dayDataDAO().getDayDataByData(currentDay);
+            if (dayDataByData.isEmpty()) {
+                Intent intent = new Intent(MainActivity.this, NewDataActivity.class);
+                startActivity(intent);
+            } else {
+                EditDataTodayModal dialogFragment = EditDataTodayModal.newInstance();
+                FragmentManager fm = getSupportFragmentManager();
 
-                            dialogFragment.show(fm, "EditDataTodayModal");
-                        }
-                    }
-                });
-
-
+                dialogFragment.show(fm, "EditDataTodayModal");
             }
-        });
+        }));
 
         Button buttonMyData = findViewById(R.id.buttonGetData);
-        buttonMyData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GetDataActivity.class);
-                startActivity(intent);
-            }
+        buttonMyData.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, GetDataActivity.class);
+            startActivity(intent);
         });
 
         Button buttonSettings = findViewById(R.id.buttonSettings);
-        buttonSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
+        buttonSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -158,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             String finalTotalSalary = String.format(Locale.US, "%.2f", salary);
-
             runOnUiThread(() -> {
                 tvSalary.setText(finalTotalSalary);
             });

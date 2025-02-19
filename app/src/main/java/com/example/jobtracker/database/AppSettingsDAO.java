@@ -4,7 +4,6 @@
     import androidx.room.Insert;
     import androidx.room.OnConflictStrategy;
     import androidx.room.Query;
-    import java.util.List;
 
     @Dao
     public interface AppSettingsDAO {
@@ -13,7 +12,7 @@
         void insert(AppSettings data);
 
         @Query("SELECT * FROM AppSettings")
-        List<AppSettings> getAll();
+        AppSettings getSettings();
 
         @Query("DELETE FROM AppSettings")
         void deleteAll();

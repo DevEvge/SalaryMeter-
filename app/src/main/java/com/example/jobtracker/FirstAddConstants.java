@@ -29,7 +29,6 @@ public class FirstAddConstants extends AppCompatActivity {
     private EditText pricePerTon;
     private Button buttonSaveNewConst;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +52,10 @@ public class FirstAddConstants extends AppCompatActivity {
         TextWatcher watcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -71,25 +68,19 @@ public class FirstAddConstants extends AppCompatActivity {
         departureFeeConst.addTextChangedListener(watcher);
         pricePerTon.addTextChangedListener(watcher);
 
-        buttonSaveNewConst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int costPerPoint = Integer.parseInt(costPerPointConst.getText().toString());
-                int deparyureFee = Integer.parseInt(departureFeeConst.getText().toString());
-                double pricePerTona = Double.parseDouble(pricePerTon.getText().toString());
+        buttonSaveNewConst.setOnClickListener(v -> {
+            int costPerPoint = Integer.parseInt(costPerPointConst.getText().toString());
+            int departureFee = Integer.parseInt(departureFeeConst.getText().toString());
+            double pricePerWeight = Double.parseDouble(pricePerTon.getText().toString());
 
-                AppSettings appSettings = new AppSettings(1, costPerPoint, deparyureFee, pricePerTona);
-                MyApp.getDbExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        AppDatabase database = MyApp.getDatabase();
-                        database.appSettingsDAO().insert(appSettings);
-                    }
-                });
-                Intent intent = new Intent(FirstAddConstants.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
+            AppSettings appSettings = new AppSettings(1, costPerPoint, departureFee, pricePerWeight);
+            MyApp.getDbExecutor().execute(() -> {
+                AppDatabase database = MyApp.getDatabase();
+                database.appSettingsDAO().insert(appSettings);
+            });
+            Intent intent = new Intent(FirstAddConstants.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
     }
 
@@ -101,7 +92,6 @@ public class FirstAddConstants extends AppCompatActivity {
                 Rect outRect = new Rect();
                 v.getGlobalVisibleRect(outRect);
                 if (!outRect.contains((int) ev.getRawX(), (int) ev.getRawY())) {
-                    // Если касание вне EditText – снимаем фокус и скрываем клавиатуру
                     v.clearFocus();
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     if (imm != null) {

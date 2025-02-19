@@ -36,31 +36,22 @@ public class GetDataActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
         Button buttonGetDataForDay = findViewById(R.id.buttonGetDataForDay);
-        buttonGetDataForDay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GetDataActivity.this, GetDataForDayActivity.class);
-                startActivity(intent);
-            }
+        buttonGetDataForDay.setOnClickListener(v -> {
+            Intent intent = new Intent(GetDataActivity.this, GetDataForDayActivity.class);
+            startActivity(intent);
         });
 
         Button buttonGetDataForMonth = findViewById(R.id.buttonGetDataForMonth);
-        buttonGetDataForMonth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GetDataActivity.this, GetDataForMonth.class);
-                startActivity(intent);
-            }
+        buttonGetDataForMonth.setOnClickListener(v -> {
+            Intent intent = new Intent(GetDataActivity.this, GetDataForMonth.class);
+            startActivity(intent);
         });
 
         ImageButton buttonArrowBack = findViewById(R.id.arrow_back1);
-        buttonArrowBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GetDataActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
+        buttonArrowBack.setOnClickListener(v -> {
+            Intent intent = new Intent(GetDataActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
     }
 
@@ -72,7 +63,6 @@ public class GetDataActivity extends AppCompatActivity {
                 Rect outRect = new Rect();
                 v.getGlobalVisibleRect(outRect);
                 if (!outRect.contains((int) ev.getRawX(), (int) ev.getRawY())) {
-                    // Если касание вне EditText – снимаем фокус и скрываем клавиатуру
                     v.clearFocus();
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     if (imm != null) {
