@@ -42,7 +42,7 @@ public class GetDataForMonth extends AppCompatActivity {
     TextView totalWeightMonth;
     TextView additionalPointsMonth;
     TextView totalJobPaidMonth;
-    private String[] months = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+    private final String[] months = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
             "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
 
     @Override
@@ -149,7 +149,7 @@ public class GetDataForMonth extends AppCompatActivity {
                             @Override
                             public void run() {
                                 pointsForMonth.setText(String.valueOf(finalTotalPoints));
-                                totalWeightMonth.setText(String.valueOf(finalTotalWeight));
+                                totalWeightMonth.setText(finalTotalWeight);
                                 additionalPointsMonth.setText(String.valueOf(finalTotalAdditionalPoints));
                                 totalJobPaidMonth.setText(String.format(Locale.getDefault(), "%.2f", finalTotalSalary));
                                 totalGas.setText(String.format(Locale.getDefault(), "%.2f", finalTotalGasCost));

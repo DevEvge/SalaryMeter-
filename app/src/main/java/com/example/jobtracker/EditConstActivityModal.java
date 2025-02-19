@@ -37,7 +37,6 @@ public class EditConstActivityModal extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        // Создаем диалог без стандартного заголовка
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return dialog;
@@ -51,32 +50,22 @@ public class EditConstActivityModal extends DialogFragment {
 
         View view = inflater.inflate(R.layout.activity_editconst_modal, container, false);
 
-        // Кнопка закрытия
         ImageButton btnClose = view.findViewById(R.id.x_close);
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        btnClose.setOnClickListener(v -> dismiss());
 
-        // Инициализация полей ввода и кнопки сохранения
         costPerPointConst = view.findViewById(R.id.costPerPointConst);
         departureFeeConst = view.findViewById(R.id.departureFeeConst);
         pricePerTon = view.findViewById(R.id.pricePerTon);
         buttonSaveNewConst = view.findViewById(R.id.buttonSaveConst);
 
 
-        // Создаем TextWatcher, который проверяет заполненность всех полей
         TextWatcher watcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Не требуется
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Не требуется
             }
 
             @Override
@@ -85,41 +74,33 @@ public class EditConstActivityModal extends DialogFragment {
             }
         };
 
-        // Привязываем TextWatcher ко всем EditText
         costPerPointConst.addTextChangedListener(watcher);
         departureFeeConst.addTextChangedListener(watcher);
         pricePerTon.addTextChangedListener(watcher);
 
-        // Обработка нажатия кнопки сохранения
-        buttonSaveNewConst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                try {
-                    int costPerPoint = Integer.parseInt(costPerPointConst.getText().toString().trim());
-                    int departureFee = Integer.parseInt(departureFeeConst.getText().toString().trim());
-                    double pricePerTona = Double.parseDouble(pricePerTon.getText().toString().trim());
+        buttonSaveNewConst.setOnClickListener(v -> {
 
-                    AppSettings appSettings = new AppSettings(1, costPerPoint, departureFee, pricePerTona);
-                    MyApp.getDbExecutor().execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            AppDatabase database = MyApp.getDatabase();
-                            database.appSettingsDAO().insert(appSettings);
-                        }
-                    });
-                    Toast.makeText(getContext(), "Данные сохранены", Toast.LENGTH_SHORT).show();
-                    dismiss();
-                } catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "Проверьте ввод числовых данных", Toast.LENGTH_SHORT).show();
-                }
+            try {
+                int costPerPoint = Integer.parseInt(costPerPointConst.getText().toString().trim());
+                int departureFee = Integer.parseInt(departureFeeConst.getText().toString().trim());
+                double pricePerTona = Double.parseDouble(pricePerTon.getText().toString().trim());
+
+                AppSettings appSettings = new AppSettings(1, costPerPoint, departureFee, pricePerTona);
+                MyApp.getDbExecutor().execute(() -> {
+                    AppDatabase database = MyApp.getDatabase();
+                    database.appSettingsDAO().insert(appSettings);
+                });
+                Toast.makeText(getContext(), "Данные сохранены", Toast.LENGTH_SHORT).show();
+                dismiss();
+            } catch (NumberFormatException e) {
+                Toast.makeText(getContext(), "Проверьте ввод числовых данных", Toast.LENGTH_SHORT).show();
             }
         });
 
         return view;
     }
 
-    // Метод для проверки заполненности всех полей
     private void checkInputFields() {
         String costStr = costPerPointConst.getText().toString().trim();
         String departureStr = departureFeeConst.getText().toString().trim();
@@ -128,8 +109,6 @@ public class EditConstActivityModal extends DialogFragment {
         boolean allFilled = !costStr.isEmpty() && !departureStr.isEmpty() && !priceStr.isEmpty();
         buttonSaveNewConst.setEnabled(allFilled);
     }
-
-
 
     @Override
     public void onStart() {

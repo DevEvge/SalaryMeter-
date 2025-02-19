@@ -10,7 +10,7 @@ import java.util.List;
 public interface GasDataDAO {
 
     @Insert
-    long insert(GasData data);
+    void insert(GasData data);
 
     @Query("SELECT * FROM GasData WHERE date LIKE :yearMonth || '%'")
     List<GasData> getAllByYearMonth(String yearMonth);

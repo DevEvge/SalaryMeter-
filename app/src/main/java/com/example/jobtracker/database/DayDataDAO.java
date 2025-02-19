@@ -9,7 +9,7 @@ import java.util.List;
 @Dao
 public interface DayDataDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    long insert(DayData data);
+    void insert(DayData data);
 
     @Query("SELECT * FROM DayData")
     List<DayData> getAll();

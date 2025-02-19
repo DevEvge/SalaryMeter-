@@ -10,7 +10,7 @@
     public interface AppSettingsDAO {
 
         @Insert(onConflict = OnConflictStrategy.REPLACE)
-        long insert(AppSettings data);
+        void insert(AppSettings data);
 
         @Query("SELECT * FROM AppSettings")
         List<AppSettings> getAll();
