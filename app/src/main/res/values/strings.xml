@@ -60,5 +60,6 @@
     <string name="totalGasSpend">Сумма за топливо</string>
     <string name="changeDataForDate">Изменит данные за день</string>
     <string name="changeDayData">Изменить данные</string>
+    <string name="year">2025</string>
 
 </resources>

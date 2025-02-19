@@ -31,6 +31,7 @@ import com.example.jobtracker.database.DayData;
 import com.example.jobtracker.database.GasData;
 import com.example.jobtracker.database.MyApp;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -58,6 +59,12 @@ public class GetDataForMonth extends AppCompatActivity {
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
         getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+
+
+
         ImageButton buttonArrowBack = findViewById(R.id.arrow_back3);
         buttonArrowBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,8 +79,10 @@ public class GetDataForMonth extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, months);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setSelection(month);
 
         EditText inputForYear = findViewById(R.id.etYear);
+        inputForYear.setText(String.valueOf(year));
 
         pointsForMonth = findViewById(R.id.edittextPointsForMonth);
         totalWeightMonth = findViewById(R.id.edittextTotalWeightMonth);

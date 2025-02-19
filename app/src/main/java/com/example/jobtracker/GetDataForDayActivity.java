@@ -75,6 +75,8 @@ public class GetDataForDayActivity extends AppCompatActivity {
 
         db = MyApp.getDatabase();
 
+
+
         getWindow().setNavigationBarColor(getResources().getColor(R.color.app_background));
         getWindow().setStatusBarColor(getResources().getColor(R.color.app_background));
 
