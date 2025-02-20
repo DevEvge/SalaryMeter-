@@ -60,5 +60,7 @@
     <string name="totalGasSpend">Сумма за топливо</string>
     <string name="changeDataForDate">Изменит данные за день</string>
     <string name="changeDayData">Изменить данные</string>
+    <string name="addNewWay">Доп. маршрут</string>
+    <string name="paymentForWay">Ставка</string>
 
 </resources>

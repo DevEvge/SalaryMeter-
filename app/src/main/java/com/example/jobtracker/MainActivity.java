@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.jobtracker.database.AdditionalDayData;
 import com.example.jobtracker.database.AppSettings;
 import com.example.jobtracker.database.DayData;
 import com.example.jobtracker.database.GasData;
@@ -119,8 +120,12 @@ public class MainActivity extends AppCompatActivity {
             double salary = 0;
             List<DayData> records = MyApp.getDatabase().dayDataDAO().getAllByYearMonth(yearMonth);
             List<GasData> gasRecords = MyApp.getDatabase().gasDataDAO().getAllByYearMonth(yearMonth);
+            List<AdditionalDayData> addWayRecords = MyApp.getDatabase().additionalDayDataDAO().getAllByYearMonth(yearMonth);
 
             for (DayData data : records) {
+                salary += data.salary;
+            }
+            for (AdditionalDayData data: addWayRecords){
                 salary += data.salary;
             }
             for (GasData data : gasRecords) {

@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <ImageButton
         android:id="@+id/arrow_back3"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:src="@drawable/navbar___left"
-        android:background="@android:color/transparent"/>
+        android:src="@drawable/navbar___left" />
 
     <Spinner
         android:id="@+id/spinnerMonth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="20dp"
-        android:background="@drawable/input_selector"/>
+        android:layout_marginTop="10dp"
+        android:background="@drawable/input_selector" />
 
     <EditText
         android:id="@+id/etYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="20dp"
-        android:inputType="number"
-        android:paddingStart="13dp"
+        android:layout_marginTop="10dp"
         android:digits="0123456789"
+        android:hint="@string/edittextYear"
+        android:inputType="number"
         android:maxLength="4"
-        android:hint="@string/edittextYear"/>
+        android:paddingStart="13dp" />
 
     <Button
         android:id="@+id/buttonLoadData"
@@ -42,26 +42,26 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         android:text="@string/buttonLoadData"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/noDataForMonth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/alertNoDataForMonth"
-        android:textSize="20sp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/alertNoDataForMonth"
         android:textColor="@color/error_text"
-        android:visibility="invisible"
-        android:layout_marginTop="10dp"/>
+        android:textSize="20sp"
+        android:visibility="invisible" />
 
 
     <LinearLayout
         android:id="@+id/getDataForMonthResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical"
         android:padding="10dp"
         android:visibility="invisible"

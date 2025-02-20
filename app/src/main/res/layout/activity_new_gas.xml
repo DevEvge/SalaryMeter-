@@ -12,24 +12,24 @@
         android:id="@+id/arrow_back5"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:src="@drawable/navbar___left"
-        android:background="@android:color/transparent"/>
+        android:src="@drawable/navbar___left" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="50dp"
+        android:orientation="vertical"
         android:padding="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/gasPrice"/>
+            android:text="@string/gasPrice"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/edittextGasPrice"
@@ -48,8 +48,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/gasAmount"/>
+            android:text="@string/gasAmount"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/edittextGasAmount"
@@ -63,11 +63,11 @@
         android:id="@+id/buttonSaveNewGas"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:text="@string/buttonSaveNewData"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="190dp"
         android:enabled="false"
-        android:layout_marginHorizontal="20dp"
-        android:textSize="20sp"
-        android:textColor="@color/text"/>
+        android:text="@string/buttonSaveNewData"
+        android:textColor="@color/text"
+        android:textSize="20sp" />
 
 </LinearLayout>

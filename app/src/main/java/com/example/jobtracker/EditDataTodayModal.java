@@ -47,6 +47,12 @@ public class EditDataTodayModal extends DialogFragment {
             startActivity(intent);
         });
 
+        Button buttonAddNewWay = view.findViewById(R.id.buttonAddNewWay);
+        buttonAddNewWay.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), AdditionalWayActivity.class);
+            startActivity(intent);
+        });
+
         Button buttonClose = view.findViewById(R.id.button_cancelEditing);
         buttonClose.setOnClickListener(v -> dismiss());
 
